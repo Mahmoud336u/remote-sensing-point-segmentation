@@ -1,0 +1,65 @@
+{
+  "files": [
+    {
+      "historical_sha256": "e7c1d77b390e81deb57be1a6acbb2e78894dc043a2bdd07410fe4cc7b4089fc2",
+      "matches_original": false,
+      "path": "src/checkpoint.py",
+      "reconstructed_sha256": "0fbd6737901a8f1c9ed195e7e2d32176be56e9a43662cae2757d63d2298d7317"
+    },
+    {
+      "historical_sha256": "b2d595ac874b625e97b2b85d437d73775f2fed78bbec8d05245c4bbc886a7edb",
+      "matches_original": false,
+      "path": "src/config.py",
+      "reconstructed_sha256": "5ed98ab9221b8e75119eca0dd384448b747fd2b2062eef32213bed4b050e650a"
+    },
+    {
+      "historical_sha256": "8cb1494a26e41e9af5788f13a8e75b531bd7ff1a764b4724d3601a2f66bbcdff",
+      "matches_original": false,
+      "path": "src/data_manifest.py",
+      "reconstructed_sha256": "7c53b4600fbb2d07be35e2651e9ef5ad0ac1db3e42ef5ba5ef1d32daad6fa49b"
+    },
+    {
+      "historical_sha256": "dc0d7ceac2422cf79c3022334e64cb8262648546fcd17f27e5d7aa2406a68736",
+      "matches_original": false,
+      "path": "src/dataset.py",
+      "reconstructed_sha256": "2cdfa725c8cbf2f1ce4e92458698d54280d8127ba2fdd851a63a73bab1d1381e"
+    },
+    {
+      "historical_sha256": "7fa84c548883c8e8e01664d10cbadae5e2397b2e7d2e48f8e28c56bed572882e",
+      "matches_original": false,
+      "path": "src/evaluate.py",
+      "reconstructed_sha256": "61b89c80b84bee86f79232de51aed1c32435c909989531eb5c9b84ea8d4e23c2"
+    },
+    {
+      "historical_sha256": "745390a91a5c7d926b27e7046ca6b56799c729a484edb4af94cfa70429da1861",
+      "matches_original": false,
+      "path": "src/losses.py",
+      "reconstructed_sha256": "2aca90a67473673d3618dc18f7b4007699331321439f384afbc41590c4f4b7fa"
+    },
+    {
+      "historical_sha256": "dc6e71abd03e88ec32268eb61123cfdb88f9b379cac4e9b04685b930377327e2",
+      "matches_original": false,
+      "path": "src/model.py",
+      "reconstructed_sha256": "6027bcd877d5bfadb5ac3bcd19a5c442dd9cbba9c133c26c3966458ad93d6a7d"
+    },
+    {
+      "historical_sha256": "332fff40ac37221e1b65137eb1b6d2b3e569a28260cf8f6633f05000ae18c077",
+      "matches_original": false,
+      "path": "src/point_sampling.py",
+      "reconstructed_sha256": "a8048d08d33cc90e43d80872620ce9030b82eb8c337eb8e604285a9fe2827623"
+    },
+    {
+      "historical_sha256": "225dabdede684e00b0a28c33f5275684c23c745dac63f99efa24e5b4029af7ab",
+      "matches_original": false,
+      "path": "src/train.py",
+      "reconstructed_sha256": "3ff9ba5469cacae7dfc381ea0991e2ca16a820dfe6c0d31ed51f36f0fb4c1b4f"
+    },
+    {
+      "historical_sha256": "59120b85c4e4e6a916590d9f85ccc5d1684e687cc6370fcf0c6e3f5bc9f761d4",
+      "matches_original": false,
+      "path": "src/visualization.py",
+      "reconstructed_sha256": "400d132ae494d5ef15dfb7134fbd5f0fb7e8a13f8e3cdce6f73390f9cca3949d"
+    }
+  ],
+  "provenance": "Fresh behavioral reconstruction, not recovered original files"
+}

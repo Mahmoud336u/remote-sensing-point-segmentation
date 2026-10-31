@@ -1,0 +1,5 @@
+numpy==2.3.5
+PyYAML==6.0.3
+rasterio==1.5.2
+shapely==2.2.0
+pytest>=8,<10

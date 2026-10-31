@@ -1,0 +1,7 @@
+{
+  "junit_sha256": "f5c769ef1ceee0d432f837c93fe9ca0e23d20309146017fe45b7a43cbdbb45ea",
+  "passed": 73,
+  "scope": "reconstructed phase2 subset of current suite; not historical tests",
+  "skipped": 1,
+  "tests": 74
+}

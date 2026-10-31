@@ -1,0 +1,72 @@
+{
+  "annotation_record_sha256": "cef0ae53b95f430a3afe3159c3f96f3fb1edff5e2107cee806a33cfe1755bff5",
+  "archive_sha256": "dd448287ff3a76291f2b159084b8a265f2ba4559bb80b0551fc8c6c0eb149a4b",
+  "base_commit": "1f77b1099a5be1cb110ea4a5b5c414121d856eab",
+  "historical_notebook_completion": "unconfirmed",
+  "historical_smoke": {
+    "annotation_fraction_percent": 0.09591774094536526,
+    "best_epoch": 2,
+    "campaign_result": false,
+    "condition": "uniform_50",
+    "epoch_1": {
+      "train_partial_ce": 1.6583889424800873,
+      "val_dense_ce": 3.0799780962201555,
+      "val_miou": 0.036966231810622426
+    },
+    "epoch_2": {
+      "train_partial_ce": 1.3867898881435394,
+      "val_dense_ce": 2.0186268144740156,
+      "val_mean_dice": 0.13590178412238893,
+      "val_miou": 0.0784768242047302,
+      "val_pixel_accuracy": 0.2721977233886719
+    },
+    "epochs": 2,
+    "inference_ms_per_image": 44.86303170051542,
+    "optimizer_updates": 8,
+    "reported_exact_checkpoint_reload": true,
+    "seed": 17,
+    "training_seconds": 3.596768976000021,
+    "unique_annotations": 400,
+    "val_pixels": 262144,
+    "valid_training_pixels": 417024
+  },
+  "historical_split": {
+    "groups": 37,
+    "groups_train_val_test": [
+      25,
+      6,
+      6
+    ],
+    "minimum_distances_m": {
+      "train-test": 2044.0,
+      "train-val": 3032.326,
+      "val-test": 11572.75
+    },
+    "scenes": 41,
+    "scenes_train_val_test": [
+      29,
+      6,
+      6
+    ]
+  },
+  "historical_tests": {
+    "cuda_skipped": 4,
+    "passed": 400
+  },
+  "manifest_sha256": "fcf16f88860546b54321840247e7c7c32a2db6306bc059df374f7374f5aad055",
+  "original_source_fingerprints": {
+    "src/checkpoint.py": "e7c1d77b390e81deb57be1a6acbb2e78894dc043a2bdd07410fe4cc7b4089fc2",
+    "src/config.py": "b2d595ac874b625e97b2b85d437d73775f2fed78bbec8d05245c4bbc886a7edb",
+    "src/data_manifest.py": "8cb1494a26e41e9af5788f13a8e75b531bd7ff1a764b4724d3601a2f66bbcdff",
+    "src/dataset.py": "dc0d7ceac2422cf79c3022334e64cb8262648546fcd17f27e5d7aa2406a68736",
+    "src/evaluate.py": "7fa84c548883c8e8e01664d10cbadae5e2397b2e7d2e48f8e28c56bed572882e",
+    "src/losses.py": "745390a91a5c7d926b27e7046ca6b56799c729a484edb4af94cfa70429da1861",
+    "src/model.py": "dc6e71abd03e88ec32268eb61123cfdb88f9b379cac4e9b04685b930377327e2",
+    "src/point_sampling.py": "332fff40ac37221e1b65137eb1b6d2b3e569a28260cf8f6633f05000ae18c077",
+    "src/train.py": "225dabdede684e00b0a28c33f5275684c23c745dac63f99efa24e5b4029af7ab",
+    "src/visualization.py": "59120b85c4e4e6a916590d9f85ccc5d1684e687cc6370fcf0c6e3f5bc9f761d4"
+  },
+  "phase4_real_campaign_runs": 0,
+  "provenance": "User recovery checkpoint supplied 2026-10-31; original artifacts unavailable; historical observations are unverified in this tree",
+  "trained_checkpoint_sha256": "9b04ef9ec64df5bdf45fcbc79df84634e7373d7358b745ba044438511689af49"
+}

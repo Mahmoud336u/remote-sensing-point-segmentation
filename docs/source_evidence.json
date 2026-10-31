@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "claims": [
+        "CC BY-NC-SA 4.0",
+        "original scenes and label definitions",
+        "Polish imagery attribution"
+      ],
+      "evidence": "user-supplied checkpoint; official host currently blocked by recovery-environment proxy; not independently reread",
+      "url": "https://landcover.ai.linuxpolska.com/"
+    },
+    {
+      "sha256": "dd448287ff3a76291f2b159084b8a265f2ba4559bb80b0551fc8c6c0eb149a4b",
+      "status": "not downloaded in this environment",
+      "url": "https://landcover.ai.linuxpolska.com/download/landcover.ai.v1.zip"
+    },
+    {
+      "evidence": "results/verification/reconstructed_initialization.json",
+      "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+      "status": "downloaded and full SHA-256 verified",
+      "url": "https://download.pytorch.org/models/resnet18-f37072fd.pth"
+    }
+  ]
+}
