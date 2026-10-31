@@ -59,3 +59,21 @@ Synthetic test fixtures exercise test-evaluation code without touching LandCover
 The original main and CPU-pilot profiles are preserved; cpu_paired adds three
 paired seeds in a separate file. No smoke score may be used as a campaign score.
 No final technical assessment report has been written.
+
+## Repository delivery and verification
+
+Review branch: recovery/reconstructed-pipeline.
+Initial reconstruction commit: a77765d, pushed successfully to the requested
+GitHub repository. Subsequent documentation commits are recorded in Git history.
+The main branch was not changed.
+
+Current verification: 114 tests passed, one CUDA-only test skipped, no failures
+or errors. The complete 77-package lock passed installation in a fresh isolated
+virtual environment plus dependency/import/model-forward checks. The notebook
+executed five code cells and retained its sampling figure. See
+docs/reconstruction_validation.md for the precise scope and visual-review limit.
+
+The required domain is absent from both the saved draft and applied network
+policy. Add and save landcover.ai.linuxpolska.com in the recovery environment's
+network settings, then resume with data preparation. Required real-data checks
+and Phase 4 are still pending, as recorded above.
