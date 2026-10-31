@@ -1,0 +1,8 @@
+{
+  "config_hash": "d7a8c18f755d77a1e8db06120107dd07becb4e4997751874c83032f46bed5346",
+  "missing_requirement": "/workspace/remote-sensing-point-segmentation/results/verification/real_data_smoke.json",
+  "real_data_campaign_runs": 0,
+  "real_data_smoke": "not run",
+  "reason": "Official dataset archive unavailable; proxy host access required before real-data smoke.",
+  "status": "blocked"
+}

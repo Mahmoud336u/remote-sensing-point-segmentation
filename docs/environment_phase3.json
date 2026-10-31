@@ -1,0 +1,7 @@
+{
+  "cuda_validation": "unrun; no CUDA hardware",
+  "current_environment_record": "docs/environment_current.json",
+  "current_phase_validation": "results/verification/current_suite.json",
+  "historical_versions_source": "user recovery checkpoint",
+  "status": "original environment record not recovered"
+}

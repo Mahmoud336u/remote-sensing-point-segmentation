@@ -1,0 +1,63 @@
+schema_version: 1
+profile: cpu_pilot
+data:
+  root: data/landcover.ai.v1
+  manifest: data/manifests/splits.json
+  archive: data/raw/landcover.ai.v1.zip
+  archive_url: https://landcover.ai.linuxpolska.com/download/landcover.ai.v1.zip
+  archive_sha256: dd448287ff3a76291f2b159084b8a265f2ba4559bb80b0551fc8c6c0eb149a4b
+  patch_size: 256
+  ignore_index: 255
+  mean:
+  - 0.485
+  - 0.456
+  - 0.406
+  std:
+  - 0.229
+  - 0.224
+  - 0.225
+  split_seed: 2026
+  split_distance_m: 256.0
+  split_fractions:
+  - 0.7
+  - 0.15
+  - 0.15
+  subset_seed: 2718
+  tile_caps:
+    train: 128
+    val: 32
+    test: 32
+  augment_d4: true
+model:
+  encoder_name: resnet18
+  in_channels: 3
+  classes: 5
+  decoder_channels:
+  - 256
+  - 128
+  - 64
+  - 32
+  - 16
+  pretrained: true
+training:
+  epochs: 10
+  batch_size: 2
+  num_workers: 0
+  lr: 0.001
+  weight_decay: 0.0001
+  scheduler: cosine
+  min_lr: 1.0e-06
+  early_stopping_patience: null
+  device: cpu
+  amp: false
+  threads: 4
+experiment:
+  seeds:
+  - 17
+  conditions:
+  - uniform_10
+  - uniform_50
+  - uniform_200
+  - stratified_50
+  - dense_reference
+  output_root: results/cpu_pilot

@@ -1,0 +1,12 @@
+{
+  "lock_sha256": "5f3772b936c7237be7aade8ba1977e1b84ad10cfab95b66b75634048e1bfb030",
+  "output_shape": [
+    2,
+    5,
+    65,
+    97
+  ],
+  "scope": "fresh isolated virtual environment; hashed lock install, pip check, imports and U-Net forward",
+  "status": "passed",
+  "torch": "2.14.0+cpu"
+}
