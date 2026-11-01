@@ -25,3 +25,9 @@ Historical results from the failed environment are not present. Their hashes and
 reported observations remain historical in docs/recovery_checkpoint.json.
 Generated model/data artifacts stay ignored. Preserve them separately during
 migration. Do not overwrite completed runs.
+
+Phase 5 adds a fresh source-bound suite, ten-section notebook execution record,
+evidence inventory, blocked real-data preflight and report-render validation.
+submission_validation.json describes ZIP integrity and is external to the ZIP
+to avoid circular hashing. The archive itself contains its per-file manifest.
+Neither rendering nor packaging changes the zero-completed-experiment status.

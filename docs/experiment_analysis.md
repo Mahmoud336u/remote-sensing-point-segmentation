@@ -13,7 +13,7 @@ contains no segmentation-performance findings.
 
 | Check | Observed result |
 | --- | --- |
-| Current unit/integration suite | 117 passed; one CUDA-only skipped; zero failures/errors |
+| Current unit/integration suite (Phase 5 rerun) | 131 passed; one CUDA-only skipped; zero failures/errors |
 | Sparse-only batch/loss contract | Passed on synthetic raster fixtures, including excluded logits/labels and empty batches |
 | Checkpoint/RNG/optimizer resume | Passed on synthetic fixtures; cumulative epoch timing preserved |
 | Configuration snapshots, run IDs, failure handling and final-test gates | Integration tests passed |

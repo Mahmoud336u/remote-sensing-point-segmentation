@@ -11,7 +11,7 @@ import torch
 from src.checkpoint import load_checkpoint
 from src.config import CONDITIONS, canonical_hash, file_sha256, load_config, resolve_path, write_json
 from src.data_manifest import load_manifest
-from src.evaluate import evaluate_checkpoint
+from src.evaluate import evaluate_checkpoint, validate_saved_metrics
 from src.train import source_fingerprints, train
 from scripts.verify_tests import verification_fingerprints
 
@@ -80,6 +80,23 @@ def collect(cfg: dict) -> dict:
         best = json.loads((directory / "best_validation.json").read_text())
         annotation = json.loads((directory / "annotations.json").read_text())
         summary = json.loads((directory / "summary.json").read_text())
+        snapshot = json.loads((directory / "config.json").read_text())
+        if canonical_hash(snapshot) != canonical_hash(cfg):
+            raise ValueError("Saved configuration snapshot differs from campaign")
+        if summary["checkpoint_sha256"] != file_sha256(checkpoint):
+            raise ValueError("Summary refers to a different checkpoint")
+        if any(run[k] != job[k] or summary[k] != job[k] for k in ("run_id", "condition", "seed")):
+            raise ValueError("Saved run identity differs from campaign")
+        history = json.loads((directory / "history.json").read_text())
+        if not history or [h["epoch"] for h in history] != list(range(1, len(history) + 1)):
+            raise ValueError("Training history has missing or repeated epochs")
+        for epoch in history:
+            validate_saved_metrics(epoch["val"], cfg["model"]["classes"])
+        selected = max(history, key=lambda h: h["val"]["miou"])
+        if (best["epoch"] != selected["epoch"] or best["metrics"] != selected["val"]
+                or summary["best_epoch"] != selected["epoch"]):
+            raise ValueError("Saved validation result violates full-history selection rule")
+        validate_saved_metrics(best["metrics"], cfg["model"]["classes"])
         for split, result in [("val", best)]:
             row = {"run_id": job["run_id"], "condition": job["condition"], "seed": job["seed"],
                    **experiment_fields(job["condition"]),
@@ -99,13 +116,21 @@ def collect(cfg: dict) -> dict:
         test_path = directory / "final_test.json"
         if test_path.exists():
             result = json.loads(test_path.read_text())
-            if result["checkpoint_sha256"] != file_sha256(checkpoint):
-                raise ValueError("Final-test metrics refer to a different checkpoint")
+            validate_test_result(result, job, summary)
             row = {**row, "split": "test"}
             row.update({k: result["metrics"][k] for k in ["miou", "mean_dice", "pixel_accuracy", "dense_ce"]})
             row.update({f"iou_class_{i}": v for i, v in enumerate(result["metrics"]["per_class_iou"])})
             rows.append(row)
     return {"config_hash": canonical_hash(cfg), "runs": statuses, "completed_rows": rows}
+
+
+def validate_test_result(result: dict, job: dict, summary: dict) -> None:
+    expected = {"split": "test", "condition": job["condition"], "seed": job["seed"],
+                "epoch": summary["best_epoch"], "checkpoint_sha256": summary["checkpoint_sha256"],
+                "manifest_sha256": summary["provenance"]["manifest_sha256"]}
+    if any(result.get(k) != v for k, v in expected.items()):
+        raise ValueError("Final-test metrics have different checkpoint or run provenance")
+    validate_saved_metrics(result["metrics"])
 
 
 def export(cfg: dict) -> dict:
@@ -194,7 +219,18 @@ def final_test(cfg: dict):
     protocol = root / "frozen_protocol.json"
     if not protocol.exists():
         raise FileNotFoundError("Freeze the protocol before test evaluation")
-    for job in plan(cfg):
+    frozen = json.loads(protocol.read_text())
+    if frozen["config_hash"] != canonical_hash(cfg) or frozen["config"] != cfg:
+        raise ValueError("Requested campaign differs from frozen configuration")
+    jobs = plan(cfg)
+    if {r["run_id"] for r in frozen["runs"]} != {r["run_id"] for r in jobs}:
+        raise ValueError("Frozen protocol run list differs from campaign")
+    for entry in frozen["runs"]:
+        if file_sha256(entry["checkpoint"]) != entry["checkpoint_sha256"]:
+            raise ValueError("Frozen checkpoint changed")
+    # Validate existing cached results before any new held-out inference occurs.
+    collect(cfg)
+    for job in jobs:
         directory = Path(job["directory"])
         output = directory / "final_test.json"
         if output.exists():

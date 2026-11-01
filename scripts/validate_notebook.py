@@ -41,10 +41,21 @@ def main():
     figures = sum("image/png" in o.get("data", {}) for c in code_cells for o in c.outputs)
     if figures < 1:
         raise RuntimeError("The sampling demonstration did not render a figure")
+    markers = [line.split("NOTEBOOK_SECTION_STATUS=", 1)[1]
+               for cell in code_cells for out in cell.outputs
+               for line in out.get("text", "").splitlines()
+               if line.startswith("NOTEBOOK_SECTION_STATUS=")]
+    if len(markers) != 1:
+        raise RuntimeError("Notebook must report the evidence status of its ten sections")
+    sections = json.loads(markers[0])
+    if len(sections) != 10:
+        raise RuntimeError("Notebook section evidence inventory is incomplete")
     nbformat.write(notebook, path)
     result = {"status": "passed", "code_cells_executed": len(code_cells), "rendered_figures": figures,
               "path": str(path), "sha256": file_sha256(path),
               "scope": "offline mathematical demo and available run-artifact inspection",
+              "section_status": sections,
+              "real_data_assessment_complete": not any(v.startswith("blocked") for v in sections.values()),
               "real_data_smoke_available": (ROOT / "results/verification/real_data_smoke.json").exists()}
     write_json(ROOT / "results/verification/notebook.json", result)
     print(json.dumps(result, indent=2))

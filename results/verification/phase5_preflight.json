@@ -1,0 +1,17 @@
+{
+  "archive_present": false,
+  "campaign_rows": 0,
+  "dataset_host_allowed_in_applied_policy": false,
+  "date": "2026-11-01",
+  "manifest_present": false,
+  "network_observation": "Current environment status: enforced restricted policy; no custom allowed_hosts; runtime observations current.",
+  "official_download_retry": "proxy CONNECT HTTP 403",
+  "phase": "5",
+  "preflight": {
+    "exception": "FileNotFoundError",
+    "reason": "[Errno 2] No such file or directory: '/workspace/remote-sensing-point-segmentation/results/verification/real_data_smoke.json'",
+    "status": "blocked"
+  },
+  "real_data_smoke_present": false,
+  "test_suite_sha256": "674e7ea3cef66c7056290fa334b9a81b007c638b2361eec85b9572437729ca19"
+}

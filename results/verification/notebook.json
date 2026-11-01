@@ -1,9 +1,22 @@
 {
-  "code_cells_executed": 5,
+  "code_cells_executed": 10,
   "path": "/workspace/remote-sensing-point-segmentation/notebooks/assessment_demo.ipynb",
+  "real_data_assessment_complete": false,
   "real_data_smoke_available": false,
   "rendered_figures": 1,
   "scope": "offline mathematical demo and available run-artifact inspection",
-  "sha256": "719783202f8605013ae58c07d3d4f7b21e11e410c322026d8bea7b285203c14e",
+  "section_status": {
+    "architecture": "synthetic_forward_verified",
+    "checkpoint": "blocked_missing_checkpoint",
+    "dataset_sample": "blocked_missing_real_data",
+    "evaluation": "blocked_missing_metrics",
+    "experimental_results": "blocked_zero_completed_runs",
+    "observations": "limitations_documented",
+    "partial_ce": "verified",
+    "setup": "verified",
+    "sparse_visualization": "synthetic_geometry_only",
+    "training_setup": "planned_only"
+  },
+  "sha256": "b9dddecb9f0337b488abd2168bc7cb09fcc731b96c886ef7bcda591ac37c4d70",
   "status": "passed"
 }
