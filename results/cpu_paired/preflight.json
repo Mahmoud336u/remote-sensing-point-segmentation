@@ -1,0 +1,97 @@
+{
+  "candidate_budget": {
+    "batch_size": 2,
+    "concurrent_runs": 1,
+    "epochs_per_run": 10,
+    "max_training_batches_per_run_at_cap": 640,
+    "max_training_batches_twelve_runs_at_cap": 7680,
+    "paired_seeds": [
+      17,
+      29,
+      43
+    ],
+    "priority": [
+      "four sparse arms at seed 17",
+      "additional paired seeds",
+      "optional dense reference"
+    ],
+    "torch_threads": 4,
+    "train_val_test_tile_caps": [
+      128,
+      32,
+      32
+    ],
+    "wall_time_feasibility": "not established; requires real-data calibration before committing to all seeds"
+  },
+  "checks": {
+    "compute": {
+      "cpu_quota_cores": 4.0,
+      "cuda_available": false,
+      "cuda_devices": 0,
+      "gpu_memory_bytes": null,
+      "memory_limit_bytes": 34359738368,
+      "status": "inspected",
+      "workspace_free_bytes": 62509654016
+    },
+    "configuration_tracking": {
+      "config_hash": "d7a8c18f755d77a1e8db06120107dd07becb4e4997751874c83032f46bed5346",
+      "status": "integration_tests_passed"
+    },
+    "dataset_partitions": {
+      "reason": "Archive and manifest absent",
+      "status": "blocked"
+    },
+    "encoder_initialization": {
+      "sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+      "status": "cached_official_weights_checksum_verified"
+    },
+    "fixed_controls": {
+      "checks": {
+        "configs/cpu_paired.yaml": true,
+        "configs/cpu_pilot.yaml": true,
+        "configs/default.yaml": true,
+        "configs/smoke.yaml": true,
+        "point_sampling.d4": true,
+        "point_sampling.sample_points": true,
+        "point_sampling.stable_seed": true,
+        "src/data_manifest.py": true,
+        "src/model.py": true
+      },
+      "compared_with": "92823669df2df449e21cc3cd40e78fbafdaaa269",
+      "status": "unchanged"
+    },
+    "full_validation_test_masks": {
+      "reason": "Official rasters absent",
+      "status": "blocked"
+    },
+    "real_data_smoke": {
+      "missing": "/workspace/remote-sensing-point-segmentation/results/verification/real_data_smoke.json",
+      "status": "blocked"
+    },
+    "sparse_only_training": {
+      "real_data_verified": false,
+      "status": "synthetic_contract_tests_passed"
+    },
+    "unit_tests": {
+      "junit_sha256": "3c6bac98bbf8de08ab56b38eafd82566c4dd89fe1e57b6333c2e07f428e8d7cd",
+      "passed": 117,
+      "skipped": 1,
+      "status": "passed"
+    }
+  },
+  "completed_experiments": 0,
+  "config_hash": "d7a8c18f755d77a1e8db06120107dd07becb4e4997751874c83032f46bed5346",
+  "final_test_evaluations": 0,
+  "network": {
+    "dataset_host": "landcover.ai.linuxpolska.com",
+    "download_attempt": "proxy CONNECT HTTP 403",
+    "draft_hostname_saved": true,
+    "draft_revision": 2,
+    "requires_publish": true,
+    "runtime_hostname_allowed": false
+  },
+  "observed_at_utc": "2026-11-01T03:01:07.512580+00:00",
+  "profile": "cpu_paired",
+  "status": "blocked",
+  "test_inference": false
+}

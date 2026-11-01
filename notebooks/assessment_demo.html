@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Assessment notebook: executed reviewer walkthrough</title>
+  <style>
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+background-color: #1a1a1a;
+border: none;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+color: #aaaaaa;
+}
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; }
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; }
+code span.at { color: #7d9029; }
+code span.bn { color: #40a070; }
+code span.bu { color: #008000; }
+code span.cf { color: #007020; font-weight: bold; }
+code span.ch { color: #4070a0; }
+code span.cn { color: #880000; }
+code span.co { color: #60a0b0; font-style: italic; }
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; }
+code span.do { color: #ba2121; font-style: italic; }
+code span.dt { color: #902000; }
+code span.dv { color: #40a070; }
+code span.er { color: #ff0000; font-weight: bold; }
+code span.ex { }
+code span.fl { color: #40a070; }
+code span.fu { color: #06287e; }
+code span.im { color: #008000; font-weight: bold; }
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; }
+code span.kw { color: #007020; font-weight: bold; }
+code span.op { color: #666666; }
+code span.ot { color: #007020; }
+code span.pp { color: #bc7a00; }
+code span.sc { color: #4070a0; }
+code span.ss { color: #bb6688; }
+code span.st { color: #4070a0; }
+code span.va { color: #19177c; }
+code span.vs { color: #4070a0; }
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Assessment notebook: executed reviewer
+walkthrough</h1>
+</header>
+<div id="cd3a9926" class="cell markdown">
+<h1 id="point-supervised-remote-sensing-segmentation-reviewer-walkthrough">Point-supervised
+remote-sensing segmentation: reviewer walkthrough</h1>
+<p><strong>Evidence status:</strong> reconstructed implementation;
+real-data training and controlled experiments are blocked. This notebook
+executes small software demonstrations and inspects saved artifacts. It
+never starts campaign training or accesses test data. Toy tensors and
+geometric plots are explicitly synthetic.</p>
+<p>The original assessment asks for Partial CE, integration on real
+remote-sensing data, and factor experiments with a report. Read
+<code>report/technical_report.pdf</code>,
+<code>report/evidence_inventory.json</code>, and
+<code>report/reviewer_audit.md</code> alongside this notebook. Missing
+outputs are shown as missing, not filled with historical smoke
+values.</p>
+<h2 id="1-imports-and-setup">1. Imports and setup</h2>
+</div>
+<div id="39a0b39a" class="cell code" data-execution_count="1" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:22:58.730983Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:22:58.730862Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.371345Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.370343Z&quot;}">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> torch</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.config <span class="im">import</span> load_config, resolve_path</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.losses <span class="im">import</span> PartialCrossEntropyLoss</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.point_sampling <span class="im">import</span> sample_points</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.model <span class="im">import</span> build_model</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> src.evaluate <span class="im">import</span> validate_saved_metrics</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="op">%</span>matplotlib inline</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>ROOT <span class="op">=</span> Path.cwd() <span class="cf">if</span> (Path.cwd() <span class="op">/</span> <span class="st">&quot;configs&quot;</span>).exists() <span class="cf">else</span> Path.cwd().parent</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>cfg <span class="op">=</span> load_config(ROOT <span class="op">/</span> <span class="st">&quot;configs/cpu_paired.yaml&quot;</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>torch.set_num_threads(<span class="dv">4</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>section_status <span class="op">=</span> {<span class="st">&quot;setup&quot;</span>: <span class="st">&quot;verified&quot;</span>}</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f&quot;Python project: </span><span class="sc">{</span>ROOT<span class="sc">.</span>name<span class="sc">}</span><span class="ss">; Torch </span><span class="sc">{</span>torch<span class="sc">.</span>__version__<span class="sc">}</span><span class="ss">; CUDA </span><span class="sc">{</span>torch<span class="sc">.</span>cuda<span class="sc">.</span>is_available()<span class="sc">}</span><span class="ss">&quot;</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Campaign training disabled in this walkthrough.&quot;</span>)</span></code></pre></div>
+<div class="output stream stderr">
+<pre><code>/workspace/remote-sensing-point-segmentation/.venv/lib/python3.12/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</code></pre>
+</div>
+<div class="output stream stdout">
+<pre><code>Python project: remote-sensing-point-segmentation; Torch 2.14.0+cpu; CUDA False
+Campaign training disabled in this walkthrough.
+</code></pre>
+</div>
+</div>
+<div id="4fc8ea3c" class="cell markdown">
+<h2 id="2-dataset-sample">2. Dataset sample</h2>
+<p>The intended source is LandCover.ai v1: RGB aerial images and labels
+0 background, 1 building, 2 woodland, 3 water, 4 road.
+Padding/unselected labels are 255. The data license is CC BY-NC-SA 4.0;
+imagery attribution is the Head Office of Geodesy and Cartography,
+Poland. Dataset facts are retained from the recovery checkpoint until
+official data can be inspected again.</p>
+<p>This cell displays a real <strong>training</strong> tile only if its
+manifest and rasters exist. It does not substitute a generated
+image.</p>
+</div>
+<div id="42d59b70" class="cell code" data-execution_count="2" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.373078Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.372839Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.377024Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.376451Z&quot;}">
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>manifest <span class="op">=</span> resolve_path(cfg, cfg[<span class="st">&quot;data&quot;</span>][<span class="st">&quot;manifest&quot;</span>])</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>train_data <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> manifest.exists():</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> src.dataset <span class="im">import</span> SegmentationDataset</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    train_data <span class="op">=</span> SegmentationDataset(cfg, <span class="st">&quot;train&quot;</span>, <span class="st">&quot;uniform_50&quot;</span>, <span class="dv">17</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    sample <span class="op">=</span> train_data.diagnostic_dense(<span class="dv">0</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">0</span>].imshow(sample[<span class="st">&quot;rgb&quot;</span>].transpose(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))<span class="op">;</span> ax[<span class="dv">0</span>].set_title(<span class="st">&quot;Real training RGB&quot;</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>].imshow(np.ma.masked_where(<span class="op">~</span>sample[<span class="st">&quot;valid_mask&quot;</span>], sample[<span class="st">&quot;dense_target&quot;</span>]), vmin<span class="op">=</span><span class="dv">0</span>, vmax<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    ax[<span class="dv">1</span>].set_title(<span class="st">&quot;Dense reference: diagnostic only&quot;</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> a <span class="kw">in</span> ax: a.axis(<span class="st">&quot;off&quot;</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;dataset_sample&quot;</span>] <span class="op">=</span> <span class="st">&quot;available&quot;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;BLOCKED: official rasters and data/manifests/splits.json are absent.&quot;</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;dataset_sample&quot;</span>] <span class="op">=</span> <span class="st">&quot;blocked_missing_real_data&quot;</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>BLOCKED: official rasters and data/manifests/splits.json are absent.
+</code></pre>
+</div>
+</div>
+<div id="d06af95c" class="cell markdown">
+<h2 id="3-sparse-annotation-visualization">3. Sparse annotation
+visualization</h2>
+<p>Uniform and stratified sampling both use 50 points. Coordinates are
+fixed before augmentation and independent of semantic labels. The
+fallback below is a <strong>synthetic geometric demonstration</strong>,
+not an aerial image or a segmentation result. No sampled class labels
+are invented.</p>
+</div>
+<div id="2e72dc02" class="cell code" data-execution_count="3" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.378096Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.377974Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.528061Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.527392Z&quot;}">
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>valid <span class="op">=</span> sample[<span class="st">&quot;valid_mask&quot;</span>] <span class="cf">if</span> train_data <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> np.ones((<span class="dv">256</span>, <span class="dv">256</span>), dtype<span class="op">=</span><span class="bu">bool</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">9</span>, <span class="dv">4</span>), sharex<span class="op">=</span><span class="va">True</span>, sharey<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, strategy <span class="kw">in</span> <span class="bu">zip</span>(axes, [<span class="st">&quot;uniform&quot;</span>, <span class="st">&quot;stratified&quot;</span>]):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    points <span class="op">=</span> sample_points(valid, <span class="dv">50</span>, <span class="dv">17</span>, strategy)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    yy, xx <span class="op">=</span> np.nonzero(points)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> train_data <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        ax.imshow(sample[<span class="st">&quot;rgb&quot;</span>].transpose(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    ax.scatter(xx, yy, s<span class="op">=</span><span class="dv">14</span>, facecolor<span class="op">=</span><span class="st">&quot;#155e75&quot;</span>, edgecolor<span class="op">=</span><span class="st">&quot;white&quot;</span>, linewidth<span class="op">=</span><span class="fl">.4</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(xlim<span class="op">=</span>(<span class="dv">0</span>, valid.shape[<span class="dv">1</span>]), ylim<span class="op">=</span>(valid.shape[<span class="dv">0</span>], <span class="dv">0</span>), xlabel<span class="op">=</span><span class="st">&quot;Column (pixels)&quot;</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>           ylabel<span class="op">=</span><span class="st">&quot;Row (pixels)&quot;</span>, title<span class="op">=</span><span class="ss">f&quot;</span><span class="sc">{</span>strategy<span class="sc">.</span>capitalize()<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>points<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> points&quot;</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    ax.set_aspect(<span class="st">&quot;equal&quot;</span>)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>fig.suptitle(<span class="st">&quot;Geometric sampling demonstration — no performance measurement&quot;</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>section_status[<span class="st">&quot;sparse_visualization&quot;</span>] <span class="op">=</span> <span class="st">&quot;real_geometry&quot;</span> <span class="cf">if</span> train_data <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">&quot;synthetic_geometry_only&quot;</span></span></code></pre></div>
+<div class="output display_data">
+<p><img src="data:image/png;base64,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0aJF6N+/P5ydnfH7779j1qxZuHfvHipVqoRu3bph3LhxSlpHR0esXbsWr776KmJjY+Hh4YGEhASNdRueRH1zCqesI6LCUJ8zbPEGN7I8jFVElqtdZBiy7zfDb4eO49l6tREXEYo7d+6YO1sAjBOrVMJIh3///bfIN1ATEaWkpDzx/iui4mKsIqLiKE6ssoibns1Nve7DhQsX4O3tbebcGMft27dRqVIlpKSkwMvLy9zZMQqWyTrYU5lEBHfu3EH58uXNmDuyF4xV1oFlsg72VCZjxCpWGAA4ODy699vb29tmDho1Ly8vlskKsEzWQVeZbOXCjSwfY5V1YZmsg72UqbixymIWbiMiIiIiIsvDCgMREREREenFCgMeraY5YcIEm5qGlWWyDiyTdbDFMpH1scXjkGWyDiyTdSjJMnGWJCIiIiIi0os9DEREREREpBcrDEREREREpBcrDEREREREpBcrDEREREREpJfdVxjmzp2LKlWqwNXVFTExMdi3b5+5s2SwiRMnQqVSafzVrFlTeT4rKwtJSUkoW7YsPD090a1bN1y9etWMOda2Y8cOdOjQAeXLl4dKpcLq1as1nhcRvPvuuwgKCoKbmxtat26N06dPa6RJS0tD37594eXlBR8fHwwcOBB37941YSk0PalM/fv31/re2rVrp5HG0so0depUPPXUUyhdujTKlSuHzp0749SpUxppDDneLly4gPbt28Pd3R3lypXDqFGjkJOTY8qiKAwpU4sWLbS+q1deeUUjjSWViWwXY5V5MVZZfqxinCrZOGXXFYZly5bhjTfewIQJE3Do0CHUqVMHcXFxuHbtmrmzZrDatWvjypUryt/OnTuV50aMGIFffvkFy5cvx/bt23H58mV07drVjLnVdu/ePdSpUwdz587V+fz06dMxe/ZsfP7559i7dy88PDwQFxeHrKwsJU3fvn1x/PhxbNq0CWvXrsWOHTswePBgUxVBy5PKBADt2rXT+N6+//57jectrUzbt29HUlIS9uzZg02bNuHhw4do27Yt7t27p6R50vGWm5uL9u3b48GDB9i1axe+/vprLF68GO+++645imRQmQBg0KBBGt/V9OnTlecsrUxkmxirzI+xyvJjFeNUCccpsWMNGzaUpKQk5XFubq6UL19epk6dasZcGW7ChAlSp04dnc+lp6eLk5OTLF++XNn2zz//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" /></p>
+</div>
+</div>
+<div id="4f454689" class="cell markdown">
+<h2 id="4-partial-cross-entropy-demonstration">4. Partial Cross-Entropy
+demonstration</h2>
+<p>For valid annotated pixels
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>=</mo><mrow><mo stretchy="true" form="prefix">|</mo><mi>M</mi><mo stretchy="true" form="postfix">|</mo></mrow></mrow><annotation encoding="application/x-tex">N=|M|</annotation></semantics></math>
+and class probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>θ</mi></msub><annotation encoding="application/x-tex">p_\theta</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>L</mi><mo>=</mo><mi>−</mi><msup><mi>N</mi><mrow><mi>−</mi><mn>1</mn></mrow></msup><msub><mo>∑</mo><mrow><mi>i</mi><mo>∈</mo><mi>M</mi></mrow></msub><mo>log</mo><msub><mi>p</mi><mi>θ</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>y</mi><mi>i</mi></msub><mo>∣</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">L=-N^{-1}\sum_{i\in M}\log p_\theta(y_i\mid x_i)</annotation></semantics></math>.
+The implementation selects logits before arithmetic and averages over
+the batch&#39;s total selected count. Synthetic logits below verify
+equivalence with ordinary CE when fully labeled, zero direct gradient at
+unselected logits, and an autograd-connected empty loss. Empty training
+batches skip forward propagation and the optimizer.</p>
+</div>
+<div id="793e9f50" class="cell code" data-execution_count="4" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.529873Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.529695Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.538562Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.537745Z&quot;}">
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>generator <span class="op">=</span> torch.Generator().manual_seed(<span class="dv">17</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>logits <span class="op">=</span> torch.randn(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">8</span>, <span class="dv">8</span>, generator<span class="op">=</span>generator, requires_grad<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> torch.randint(<span class="dv">0</span>, <span class="dv">5</span>, (<span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">8</span>), generator<span class="op">=</span>generator)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>loss_fn <span class="op">=</span> PartialCrossEntropyLoss()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>full <span class="op">=</span> loss_fn(logits, labels, torch.ones_like(labels, dtype<span class="op">=</span>torch.<span class="bu">bool</span>))</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>ordinary <span class="op">=</span> torch.nn.functional.cross_entropy(logits, labels)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>torch.testing.assert_close(full, ordinary)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>point_mask <span class="op">=</span> torch.zeros_like(labels, dtype<span class="op">=</span>torch.<span class="bu">bool</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>point_mask[<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">2</span>] <span class="op">=</span> <span class="va">True</span><span class="op">;</span> point_mask[<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">4</span>] <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>sparse <span class="op">=</span> torch.full_like(labels, <span class="dv">255</span>)<span class="op">;</span> sparse[point_mask] <span class="op">=</span> labels[point_mask]</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>loss <span class="op">=</span> loss_fn(logits, sparse, point_mask)<span class="op">;</span> loss.backward()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> torch.count_nonzero(logits.grad.permute(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>)[<span class="op">~</span>point_mask]) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>empty <span class="op">=</span> loss_fn(logits, sparse, torch.zeros_like(point_mask))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> empty.item() <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> empty.requires_grad</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;PASS: full-label equivalence, zero unselected direct gradients, connected empty loss.&quot;</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Synthetic numerical demonstration only; no segmentation quality measured.&quot;</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>section_status[<span class="st">&quot;partial_ce&quot;</span>] <span class="op">=</span> <span class="st">&quot;verified&quot;</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>PASS: full-label equivalence, zero unselected direct gradients, connected empty loss.
+Synthetic numerical demonstration only; no segmentation quality measured.
+</code></pre>
+</div>
+</div>
+<div id="3ec936b8" class="cell markdown">
+<h2 id="5-segmentation-architecture">5. Segmentation architecture</h2>
+<p>SMP U-Net, ResNet-18 encoder, decoder widths 256/128/64/32/16, RGB
+input, five raw logits. Inputs are padded to multiples of 32 and cropped
+back. This check uses <strong>untrained weights</strong>, performs no
+downloads and does not demonstrate learned predictions. Campaigns
+request verified ImageNet initialization; the cached initialization hash
+is recorded separately.</p>
+</div>
+<div id="565b3ae5" class="cell code" data-execution_count="5" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.540625Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.540454Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.694159Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.693514Z&quot;}">
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> build_model(cfg, initialize<span class="op">=</span><span class="va">False</span>).<span class="bu">eval</span>()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> torch.inference_mode():</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    shape <span class="op">=</span> <span class="bu">list</span>(model(torch.zeros(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">65</span>, <span class="dv">97</span>)).shape)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>parameters <span class="op">=</span> <span class="bu">sum</span>(p.numel() <span class="cf">for</span> p <span class="kw">in</span> model.parameters())</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> shape <span class="op">==</span> [<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">65</span>, <span class="dv">97</span>] <span class="kw">and</span> parameters <span class="op">==</span> <span class="dv">14_328_789</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({<span class="st">&quot;parameters&quot;</span>: parameters, <span class="st">&quot;padded_forward_output&quot;</span>: shape, <span class="st">&quot;trained&quot;</span>: <span class="va">False</span>})</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>init <span class="op">=</span> json.loads((ROOT <span class="op">/</span> <span class="st">&quot;results/verification/reconstructed_initialization.json&quot;</span>).read_text())</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({<span class="st">&quot;recorded_initialization_check&quot;</span>: init[<span class="st">&quot;status&quot;</span>], <span class="st">&quot;sha256&quot;</span>: init[<span class="st">&quot;encoder_weight_sha256&quot;</span>]})</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>section_status[<span class="st">&quot;architecture&quot;</span>] <span class="op">=</span> <span class="st">&quot;synthetic_forward_verified&quot;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> model</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>{&#39;parameters&#39;: 14328789, &#39;padded_forward_output&#39;: [1, 5, 65, 97], &#39;trained&#39;: False}
+{&#39;recorded_initialization_check&#39;: &#39;passed&#39;, &#39;sha256&#39;: &#39;f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec&#39;}
+</code></pre>
+</div>
+</div>
+<div id="b3631292" class="cell markdown">
+<h2 id="6-training-setup">6. Training setup</h2>
+<p>The candidate CPU campaign controls all factors except point budget
+or strategy. A2 is reused as B1. Three paired seeds are planned, but
+feasibility requires real-data timing. These are planned settings, not
+executed runs. Training is intentionally an explicit CLI operation after
+preflight.</p>
+</div>
+<div id="353e6965" class="cell code" data-execution_count="6" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.698843Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.698696Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.704552Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.703664Z&quot;}">
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> experiments.run_experiments <span class="im">import</span> plan</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>jobs <span class="op">=</span> plan(cfg)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(json.dumps({<span class="st">&quot;profile&quot;</span>: cfg[<span class="st">&quot;profile&quot;</span>], <span class="st">&quot;training&quot;</span>: cfg[<span class="st">&quot;training&quot;</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;tile_caps&quot;</span>: cfg[<span class="st">&quot;data&quot;</span>][<span class="st">&quot;tile_caps&quot;</span>], <span class="st">&quot;seeds&quot;</span>: cfg[<span class="st">&quot;experiment&quot;</span>][<span class="st">&quot;seeds&quot;</span>],</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>                  <span class="st">&quot;conditions&quot;</span>: cfg[<span class="st">&quot;experiment&quot;</span>][<span class="st">&quot;conditions&quot;</span>], <span class="st">&quot;planned_runs&quot;</span>: <span class="bu">len</span>(jobs)}, indent<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> (<span class="dv">10</span>, <span class="dv">50</span>, <span class="dv">200</span>):</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f&quot;Nominal full-tile annotation fraction, K=</span><span class="sc">{</span>k<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span><span class="dv">100</span><span class="op">*</span>k<span class="op">/</span>(<span class="dv">256</span><span class="op">*</span><span class="dv">256</span>)<span class="sc">:.8f}</span><span class="ss">%&quot;</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;Actual pooled fractions require annotations.json from real training subsets.&quot;</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>section_status[<span class="st">&quot;training_setup&quot;</span>] <span class="op">=</span> <span class="st">&quot;planned_only&quot;</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>{
+  &quot;profile&quot;: &quot;cpu_paired&quot;,
+  &quot;training&quot;: {
+    &quot;epochs&quot;: 10,
+    &quot;batch_size&quot;: 2,
+    &quot;num_workers&quot;: 0,
+    &quot;lr&quot;: 0.001,
+    &quot;weight_decay&quot;: 0.0001,
+    &quot;scheduler&quot;: &quot;cosine&quot;,
+    &quot;min_lr&quot;: 1e-06,
+    &quot;early_stopping_patience&quot;: null,
+    &quot;device&quot;: &quot;cpu&quot;,
+    &quot;amp&quot;: false,
+    &quot;threads&quot;: 4
+  },
+  &quot;tile_caps&quot;: {
+    &quot;train&quot;: 128,
+    &quot;val&quot;: 32,
+    &quot;test&quot;: 32
+  },
+  &quot;seeds&quot;: [
+    17,
+    29,
+    43
+  ],
+  &quot;conditions&quot;: [
+    &quot;uniform_10&quot;,
+    &quot;uniform_50&quot;,
+    &quot;uniform_200&quot;,
+    &quot;stratified_50&quot;
+  ],
+  &quot;planned_runs&quot;: 12
+}
+Nominal full-tile annotation fraction, K=10: 0.01525879%
+Nominal full-tile annotation fraction, K=50: 0.07629395%
+Nominal full-tile annotation fraction, K=200: 0.30517578%
+Actual pooled fractions require annotations.json from real training subsets.
+</code></pre>
+</div>
+</div>
+<div id="0cb54495" class="cell markdown">
+<h2 id="7-checkpoint-inspection">7. Checkpoint inspection</h2>
+<p>A saved checkpoint may be loaded without downloading encoder
+initialization. This walkthrough inspects the first completed campaign
+checkpoint only when it exists; it does not launch expensive training.
+The package contains no trained checkpoint because none was recovered or
+produced in this environment.</p>
+</div>
+<div id="f6e5e886" class="cell code" data-execution_count="7" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.706175Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.706048Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.710298Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.709702Z&quot;}">
+<div class="sourceCode" id="cb13"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>completed <span class="op">=</span> []</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> job <span class="kw">in</span> jobs:</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    run_path <span class="op">=</span> Path(job[<span class="st">&quot;directory&quot;</span>]) <span class="op">/</span> <span class="st">&quot;run.json&quot;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> run_path.exists() <span class="kw">and</span> json.loads(run_path.read_text())[<span class="st">&quot;status&quot;</span>] <span class="op">==</span> <span class="st">&quot;completed&quot;</span>:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        completed.append(job)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> completed:</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="im">from</span> src.checkpoint <span class="im">import</span> load_checkpoint</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    checkpoint <span class="op">=</span> Path(completed[<span class="dv">0</span>][<span class="st">&quot;directory&quot;</span>]) <span class="op">/</span> <span class="st">&quot;checkpoints/best.pt&quot;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    state <span class="op">=</span> load_checkpoint(checkpoint)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    restored <span class="op">=</span> build_model(state[<span class="st">&quot;config&quot;</span>], initialize<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    restored.load_state_dict(state[<span class="st">&quot;model&quot;</span>])</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>({<span class="st">&quot;checkpoint&quot;</span>: <span class="bu">str</span>(checkpoint), <span class="st">&quot;epoch&quot;</span>: state[<span class="st">&quot;epoch&quot;</span>], <span class="st">&quot;condition&quot;</span>: state[<span class="st">&quot;condition&quot;</span>]})</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;checkpoint&quot;</span>] <span class="op">=</span> <span class="st">&quot;loaded&quot;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">del</span> restored, state</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;BLOCKED: no completed real-data campaign checkpoint exists.&quot;</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;checkpoint&quot;</span>] <span class="op">=</span> <span class="st">&quot;blocked_missing_checkpoint&quot;</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>BLOCKED: no completed real-data campaign checkpoint exists.
+</code></pre>
+</div>
+</div>
+<div id="008007c6" class="cell markdown">
+<h2 id="8-evaluation-evidence">8. Evaluation evidence</h2>
+<p>Evaluation pools one confusion matrix, with ground-truth rows and
+prediction columns, includes background and excludes padding. Classes
+absent from both sides are omitted from macro scores;
+false-positive-only classes score zero. Saved scores are recomputed from
+the matrix below when available. No test inference occurs here.</p>
+</div>
+<div id="8b1c740b" class="cell code" data-execution_count="8" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.711806Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.711682Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.715167Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.714065Z&quot;}">
+<div class="sourceCode" id="cb15"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> completed:</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    saved <span class="op">=</span> json.loads((Path(completed[<span class="dv">0</span>][<span class="st">&quot;directory&quot;</span>]) <span class="op">/</span> <span class="st">&quot;best_validation.json&quot;</span>).read_text())</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    validate_saved_metrics(saved[<span class="st">&quot;metrics&quot;</span>])</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(json.dumps(saved, indent<span class="op">=</span><span class="dv">2</span>))</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;evaluation&quot;</span>] <span class="op">=</span> <span class="st">&quot;saved_validation_metrics_checked&quot;</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">&quot;BLOCKED: no real-data confusion matrix or validation/test metrics exist.&quot;</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;evaluation&quot;</span>] <span class="op">=</span> <span class="st">&quot;blocked_missing_metrics&quot;</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>BLOCKED: no real-data confusion matrix or validation/test metrics exist.
+</code></pre>
+</div>
+</div>
+<div id="2577d1b8" class="cell markdown">
+<h2 id="9-experimental-result-visualization">9. Experimental result
+visualization</h2>
+<p>Results are read from the actual campaign export. Missing runs
+receive no invented score, error bar or prediction. When results exist,
+this view plots individual seed measurements; full figures and editable
+chart data are generated by
+<code>experiments.analyze_results</code>.</p>
+</div>
+<div id="02cb23eb" class="cell code" data-execution_count="9" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.716451Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.716273Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.722631Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.721667Z&quot;}">
+<div class="sourceCode" id="cb17"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>result_path <span class="op">=</span> ROOT <span class="op">/</span> cfg[<span class="st">&quot;experiment&quot;</span>][<span class="st">&quot;output_root&quot;</span>] <span class="op">/</span> <span class="st">&quot;results.json&quot;</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> json.loads(result_path.read_text()) <span class="cf">if</span> result_path.exists() <span class="cf">else</span> []</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>status_path <span class="op">=</span> result_path.with_name(<span class="st">&quot;run_status.json&quot;</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>statuses <span class="op">=</span> json.loads(status_path.read_text()) <span class="cf">if</span> status_path.exists() <span class="cf">else</span> []</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({<span class="st">&quot;measured_rows&quot;</span>: <span class="bu">len</span>(rows), <span class="st">&quot;run_status_counts&quot;</span>: {</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    s: <span class="bu">sum</span>(r[<span class="st">&quot;status&quot;</span>] <span class="op">==</span> s <span class="cf">for</span> r <span class="kw">in</span> statuses) <span class="cf">for</span> s <span class="kw">in</span> <span class="bu">sorted</span>({r[<span class="st">&quot;status&quot;</span>] <span class="cf">for</span> r <span class="kw">in</span> statuses})}})</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rows:</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    val_rows <span class="op">=</span> [r <span class="cf">for</span> r <span class="kw">in</span> rows <span class="cf">if</span> r[<span class="st">&quot;split&quot;</span>] <span class="op">==</span> <span class="st">&quot;val&quot;</span>]</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> condition <span class="kw">in</span> cfg[<span class="st">&quot;experiment&quot;</span>][<span class="st">&quot;conditions&quot;</span>]:</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>        values <span class="op">=</span> [r[<span class="st">&quot;miou&quot;</span>] <span class="cf">for</span> r <span class="kw">in</span> val_rows <span class="cf">if</span> r[<span class="st">&quot;condition&quot;</span>] <span class="op">==</span> condition]</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>        ax.scatter([condition] <span class="op">*</span> <span class="bu">len</span>(values), values, label<span class="op">=</span>condition)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>    ax.<span class="bu">set</span>(ylabel<span class="op">=</span><span class="st">&quot;Validation mIoU (0–1)&quot;</span>, title<span class="op">=</span><span class="st">&quot;Recorded per-seed validation results&quot;</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>    plt.xticks(rotation<span class="op">=</span><span class="dv">20</span>)<span class="op">;</span> fig.tight_layout()<span class="op">;</span> plt.show()</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;experimental_results&quot;</span>] <span class="op">=</span> <span class="st">&quot;saved_rows_displayed&quot;</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>    display(Markdown(<span class="st">&quot;**No empirical performance figure can be produced: all required runs are blocked.**&quot;</span>))</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>    section_status[<span class="st">&quot;experimental_results&quot;</span>] <span class="op">=</span> <span class="st">&quot;blocked_zero_completed_runs&quot;</span></span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>{&#39;measured_rows&#39;: 0, &#39;run_status_counts&#39;: {&#39;blocked_prerequisites&#39;: 12}}
+</code></pre>
+</div>
+<div class="output display_data">
+<pre><code>&lt;IPython.core.display.Markdown object&gt;</code></pre>
+</div>
+</div>
+<div id="e2f29692" class="cell markdown">
+<h2 id="10-key-observations-and-next-steps">10. Key observations and
+next steps</h2>
+<p>The software demonstrations establish mathematical and interface
+behavior on synthetic inputs. They do not establish segmentation quality
+on LandCover.ai. Annotation-density and stratification hypotheses remain
+untested. Real-data class support, rare-class errors, seed variance and
+practical annotation needs are unmeasured.</p>
+<p>Restore official data access; verify archive, geographic partitions
+and full held-out masks; run a real-data smoke with exact checkpoint
+reload; then execute the controlled campaign. Freeze checkpoints before
+final test inference. Replace blocked report sections only with verified
+saved measurements. Simulated points also do not measure human
+annotation time, ambiguity or selection behavior.</p>
+</div>
+<div id="a4215064" class="cell code" data-execution_count="10" data-execution="{&quot;iopub.execute_input&quot;:&quot;2026-11-01T03:23:01.724050Z&quot;,&quot;iopub.status.busy&quot;:&quot;2026-11-01T03:23:01.723912Z&quot;,&quot;iopub.status.idle&quot;:&quot;2026-11-01T03:23:01.727128Z&quot;,&quot;shell.execute_reply&quot;:&quot;2026-11-01T03:23:01.726503Z&quot;}">
+<div class="sourceCode" id="cb20"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>suite <span class="op">=</span> json.loads((ROOT <span class="op">/</span> <span class="st">&quot;results/verification/current_suite.json&quot;</span>).read_text())</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>({k: suite[k] <span class="cf">for</span> k <span class="kw">in</span> (<span class="st">&quot;status&quot;</span>, <span class="st">&quot;passed&quot;</span>, <span class="st">&quot;skipped&quot;</span>, <span class="st">&quot;failures&quot;</span>, <span class="st">&quot;errors&quot;</span>)})</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>section_status[<span class="st">&quot;observations&quot;</span>] <span class="op">=</span> <span class="st">&quot;limitations_documented&quot;</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;NOTEBOOK_SECTION_STATUS=&quot;</span> <span class="op">+</span> json.dumps(section_status, sort_keys<span class="op">=</span><span class="va">True</span>))</span></code></pre></div>
+<div class="output stream stdout">
+<pre><code>{&#39;status&#39;: &#39;passed&#39;, &#39;passed&#39;: 131, &#39;skipped&#39;: 1, &#39;failures&#39;: 0, &#39;errors&#39;: 0}
+NOTEBOOK_SECTION_STATUS={&quot;architecture&quot;: &quot;synthetic_forward_verified&quot;, &quot;checkpoint&quot;: &quot;blocked_missing_checkpoint&quot;, &quot;dataset_sample&quot;: &quot;blocked_missing_real_data&quot;, &quot;evaluation&quot;: &quot;blocked_missing_metrics&quot;, &quot;experimental_results&quot;: &quot;blocked_zero_completed_runs&quot;, &quot;observations&quot;: &quot;limitations_documented&quot;, &quot;partial_ce&quot;: &quot;verified&quot;, &quot;setup&quot;: &quot;verified&quot;, &quot;sparse_visualization&quot;: &quot;synthetic_geometry_only&quot;, &quot;training_setup&quot;: &quot;planned_only&quot;}
+</code></pre>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "filename": "Technical Assessment.pdf",
+  "sha256": "6b7cfc9586a35d6df4fa6a0816333cedfdb149098b21580eadbd2deb83ee561e",
+  "bytes": 434155,
+  "pages": 1,
+  "source": "user-uploaded assessment PDF",
+  "review": "text extraction and rendered-page visual inspection, including embedded problem statement",
+  "tasks": [
+    "Implement partial Cross entropy loss",
+    "Find any remote sensing image segmentation data, randomly sample the simulated point label, and add the loss to any remote sensing segmentation network",
+    "Design experiments, explore one or two factors that affect the performance, and write technical reports (method + experiment(purpose/hypothesis + experimental process + results))"
+  ],
+  "tools_requirement": "Python; any deep learning toolbox; Python files or Jupyter notebook plus supporting document",
+  "original_pdf_redistributed": false
+}

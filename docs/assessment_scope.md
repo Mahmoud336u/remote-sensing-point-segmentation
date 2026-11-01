@@ -8,5 +8,8 @@ The required real-data gate is independent from synthetic unit/integration
 verification. Only completed real-data campaign runs can support experimental
 conclusions. Notebook toy examples and old smoke numbers are not substitutes.
 
-The final technical assessment report remains outside the authorized Phase 4
-deliverable. CUDA behavior is unverified on the current CPU-only machine.
+Phase 5 now includes the technical report, evidence inventory, notebook,
+engineering review and submission archive. The uploaded original assessment was
+reviewed; see assessment_requirements.md. CUDA behavior remains unverified on
+the current CPU-only machine. Packaging does not complete the missing real-data
+and experimental requirements.

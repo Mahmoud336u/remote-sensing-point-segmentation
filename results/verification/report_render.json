@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "technical report PDF rendering; notebook execution and embedded figure inspected separately",
+  "pages": 7,
+  "pdf_sha256": "3099c6b6d9dceaf23dd4810c26aebfc14eb38391dcac43f853fc1fe8be147ab1",
+  "source_sha256": "e6852e9d768d96f479b441ae1d3b1b7b1e86d7fc8f201883903060fbd5b56108",
+  "header_sha256": "2f121d2c212ad67299a2f360b223349fab7eb732264bde5e2797541f2cc05605",
+  "workflow_source_sha256": "eea9930774f4a0bc3d05f9bf40da1b0acfa5b7559b53b13b534cf3315eafd2a6",
+  "workflow_pdf_sha256": "93a0619641e065c2ff15224fac2dbda0f504cd58773b8c4b47d5518d4c5b9643",
+  "visual_reviewed_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "checks": [
+    "all page rasters visually inspected",
+    "PCE and metric equations readable",
+    "tables aligned",
+    "conceptual workflow labels readable",
+    "no out-of-page text",
+    "all ten report sections present"
+  ],
+  "out_of_page_text": [],
+  "tools": {
+    "pandoc": "pandoc 3.1.11.1",
+    "xelatex": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)",
+    "pymupdf": "1.26.6",
+    "graphviz": "dot - graphviz version 2.42.4 (0)"
+  },
+  "notebook_html": {
+    "sha256": "394e52df4945e422a3f0c57c66af1832b7b837698bf94ff0892220379053f6bb",
+    "standalone_embedded_resources": true,
+    "browser_screenshot_status": "not completed: two bounded Chromium attempts timed out",
+    "embedded_png_visual_review": "passed; synthetic geometry, labelled axes and 50 points per strategy"
+  },
+  "assessment_complete": false
+}

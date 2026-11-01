@@ -1,4 +1,5 @@
 {
+  "baseline_commit": "92823669df2df449e21cc3cd40e78fbafdaaa269",
   "files": [
     {
       "historical_sha256": "e7c1d77b390e81deb57be1a6acbb2e78894dc043a2bdd07410fe4cc7b4089fc2",
@@ -61,5 +62,6 @@
       "reconstructed_sha256": "400d132ae494d5ef15dfb7134fbd5f0fb7e8a13f8e3cdce6f73390f9cca3949d"
     }
   ],
-  "provenance": "Fresh behavioral reconstruction, not recovered original files"
+  "provenance": "Fresh behavioral reconstruction, not recovered original files",
+  "scope": "Initial recovery fingerprints; later Phase4 measurement additions are tracked in Git and current_suite.json"
 }

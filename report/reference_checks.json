@@ -1,0 +1,38 @@
+{
+  "retrieved_readmes": [
+    {
+      "name": "resnet",
+      "url": "https://raw.githubusercontent.com/KaimingHe/deep-residual-networks/master/README.md",
+      "status": "retrieved",
+      "sha256": "57c86bfb74e810a844ed79137930e4c45b9d60ef60db38f9ddb3a1f80ec1efc8",
+      "bytes": 7057
+    },
+    {
+      "name": "pytorch",
+      "url": "https://raw.githubusercontent.com/pytorch/pytorch/main/README.md",
+      "status": "retrieved",
+      "sha256": "d7889d73da00e188dd9799bf7c9a6b24f3750fd48b662c374865119cf8d11314",
+      "bytes": 23629
+    },
+    {
+      "name": "smp",
+      "url": "https://raw.githubusercontent.com/qubvel-org/segmentation_models.pytorch/main/README.md",
+      "status": "retrieved",
+      "sha256": "b2a362a8599d778080040a9caa413eb731618aab1d3d8335c2b5a4b0bd61a673",
+      "bytes": 15145
+    },
+    {
+      "name": "landcover",
+      "url": "https://raw.githubusercontent.com/landcover-ai/landcover-ai/master/README.md",
+      "status": "unavailable",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "name": "points",
+      "url": "https://raw.githubusercontent.com/abearman/whats-the-point/master/README.md",
+      "status": "unavailable",
+      "error": "HTTP Error 404: Not Found"
+    }
+  ],
+  "scope": "ResNet and SMP author/title metadata cross-checked in official repositories. Paper links are stable bibliographic references; full papers were not fetched in this environment. Dataset access and license information remain attributed to the user recovery checkpoint."
+}

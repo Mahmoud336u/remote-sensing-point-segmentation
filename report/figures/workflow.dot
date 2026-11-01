@@ -1,0 +1,13 @@
+digraph workflow {
+  graph [rankdir=TB, bgcolor="white", pad=.12, nodesep=.25, ranksep=.25];
+  node [shape=box, style="rounded", color="#444444", fontname="DejaVu Sans", fontsize=11, margin=".10,.08"];
+  edge [color="#555555", arrowsize=.6];
+  a [label="Official rasters\nSHA-256 + inventory"];
+  b [label="Geographic groups\nFrozen split + tiles"];
+  c [label="Train: fixed points\nU-Net + Partial CE"];
+  d [label="Validation: dense masks\nBest mIoU checkpoint"];
+  e [label="Freeze protocol\nExplicit final-test access"];
+  { rank=same; a; b; c; }
+  { rank=same; d; e; }
+  a -> b -> c -> d -> e;
+}

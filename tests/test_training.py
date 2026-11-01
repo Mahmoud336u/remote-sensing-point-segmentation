@@ -22,12 +22,18 @@ def test_interruption_resume_exact(raster_cfg, tmp_path, monkeypatch):
     a, b = tmp_path / "continuous", tmp_path / "resumed"
     train(raster_cfg, "uniform_50", 17, output_dir=a)
     train(raster_cfg, "uniform_50", 17, output_dir=b, stop_after_epochs=1)
+    first_timing = json.loads((b / "timing.json").read_text())[0]
     train(raster_cfg, "uniform_50", 17, output_dir=b, resume=True)
     ca, cb = (load_checkpoint(p / "checkpoints/last.pt") for p in (a, b))
     assert ca["history"] == cb["history"]
     for key in ca["model"]:
         torch.testing.assert_close(ca["model"][key], cb["model"][key], rtol=0, atol=0)
     assert ca["scheduler"] == cb["scheduler"]
+    assert cb["timings"][0] == first_timing
+    assert [row["epoch"] for row in cb["timings"]] == [1, 2]
+    summary = json.loads((b / "summary.json").read_text())
+    assert summary["training_seconds"] == sum(row["training_seconds"] for row in cb["timings"])
+    assert summary["training_seconds"] > 0 and summary["validation_seconds"] > 0
     reloaded = evaluate_checkpoint(a / "checkpoints/best.pt")
     assert reloaded["metrics"] == json.loads((a / "best_validation.json").read_text())["metrics"]
     with pytest.raises(FileExistsError, match="Completed"):

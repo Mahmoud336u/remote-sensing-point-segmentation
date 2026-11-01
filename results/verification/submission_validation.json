@@ -1,0 +1,16 @@
+{
+  "archive": "remote_sensing_assessment_submission.zip",
+  "assessment_complete": false,
+  "bytes": 448642,
+  "checks": [
+    "CRC",
+    "membership",
+    "SHA256 per file",
+    "required artifacts",
+    "excluded paths"
+  ],
+  "members": 111,
+  "sha256": "179aaa3fed4ddd3fb3dea4ca4370e3f213143763ed18e5d36dc2a184c8201acc",
+  "status": "passed",
+  "trained_checkpoint_included": false
+}

@@ -1,0 +1,78 @@
+{
+  "_repo_root": "/workspace/remote-sensing-point-segmentation",
+  "data": {
+    "archive": "data/raw/landcover.ai.v1.zip",
+    "archive_sha256": "dd448287ff3a76291f2b159084b8a265f2ba4559bb80b0551fc8c6c0eb149a4b",
+    "archive_url": "https://landcover.ai.linuxpolska.com/download/landcover.ai.v1.zip",
+    "augment_d4": true,
+    "ignore_index": 255,
+    "manifest": "data/manifests/splits.json",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "patch_size": 256,
+    "root": "data/landcover.ai.v1",
+    "split_distance_m": 256.0,
+    "split_fractions": [
+      0.7,
+      0.15,
+      0.15
+    ],
+    "split_seed": 2026,
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ],
+    "subset_seed": 2718,
+    "tile_caps": {
+      "test": 32,
+      "train": 128,
+      "val": 32
+    }
+  },
+  "experiment": {
+    "conditions": [
+      "uniform_10",
+      "uniform_50",
+      "uniform_200",
+      "stratified_50"
+    ],
+    "output_root": "results/cpu_paired",
+    "seeds": [
+      17,
+      29,
+      43
+    ]
+  },
+  "model": {
+    "classes": 5,
+    "decoder_channels": [
+      256,
+      128,
+      64,
+      32,
+      16
+    ],
+    "encoder_name": "resnet18",
+    "in_channels": 3,
+    "pretrained": true
+  },
+  "profile": "cpu_paired",
+  "schema_version": 1,
+  "training": {
+    "amp": false,
+    "batch_size": 2,
+    "device": "cpu",
+    "early_stopping_patience": null,
+    "epochs": 10,
+    "lr": 0.001,
+    "min_lr": 1e-06,
+    "num_workers": 0,
+    "scheduler": "cosine",
+    "threads": 4,
+    "weight_decay": 0.0001
+  }
+}

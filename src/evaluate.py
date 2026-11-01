@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from pathlib import Path
 import numpy as np
 import torch
@@ -18,9 +19,14 @@ CLASS_NAMES = ["background", "building", "woodland", "water", "road"]
 
 
 def metrics_from_confusion(confusion: np.ndarray | torch.Tensor) -> dict:
-    cm = np.asarray(confusion, dtype=np.int64)
-    if cm.ndim != 2 or cm.shape[0] != cm.shape[1] or np.any(cm < 0):
-        raise ValueError("Expected square nonnegative confusion matrix")
+    cm = np.asarray(confusion)
+    if (cm.ndim != 2 or not cm.shape[0] or cm.shape[0] != cm.shape[1]
+            or cm.dtype.kind not in "iu" or np.any(cm < 0)):
+        raise ValueError("Expected square nonnegative integer confusion matrix")
+    # Counts must not be silently truncated or overflow during pooled arithmetic.
+    if sum(int(v) for v in cm.flat) > np.iinfo(np.int64).max // 2:
+        raise ValueError("Confusion counts exceed safe int64 metric arithmetic")
+    cm = cm.astype(np.int64)
     support = cm.sum(axis=1)
     predicted = cm.sum(axis=0)
     tp = np.diag(cm)
@@ -38,6 +44,32 @@ def metrics_from_confusion(confusion: np.ndarray | torch.Tensor) -> dict:
             "class_support": support.tolist(), "predicted_support": predicted.tolist(),
             "confusion_matrix": cm.tolist(), "valid_pixels": int(cm.sum()),
             "class_names": CLASS_NAMES[:len(cm)]}
+
+
+def validate_saved_metrics(metrics: dict, classes: int = 5) -> None:
+    """Check serialized scores against their confusion counts, without inference."""
+    if np.shape(metrics["confusion_matrix"]) != (classes, classes):
+        raise ValueError("Saved confusion matrix has the wrong class count")
+    expected = metrics_from_confusion(metrics["confusion_matrix"])
+
+    def same(a, b):
+        if isinstance(b, list):
+            return isinstance(a, list) and len(a) == len(b) and all(
+                same(x, y) for x, y in zip(a, b))
+        if isinstance(b, float):
+            return isinstance(a, (int, float)) and math.isfinite(a) and math.isclose(
+                a, b, rel_tol=1e-12, abs_tol=1e-12)
+        return a == b
+
+    for key, value in expected.items():
+        if key not in metrics or not same(metrics[key], value):
+            raise ValueError(f"Saved {key} disagrees with confusion matrix")
+    ce = metrics.get("dense_ce")
+    if (expected["valid_pixels"] and
+            (not isinstance(ce, (int, float)) or not math.isfinite(ce) or ce < 0)):
+        raise ValueError("Dense CE must be finite and nonnegative for valid pixels")
+    if not expected["valid_pixels"] and ce is not None:
+        raise ValueError("Dense CE must be undefined when there are no valid pixels")
 
 
 def confusion_update(confusion: torch.Tensor, prediction: torch.Tensor,
@@ -68,6 +100,8 @@ def evaluate_model(model, loader, device: torch.device | str, classes: int = 5) 
             selected_logits = logits.permute(0, 2, 3, 1)[valid].float()
             selected_targets = targets[valid].long()
             if len(selected_targets):
+                if not torch.isfinite(selected_logits).all():
+                    raise ValueError("Nonfinite logits at valid evaluation pixels")
                 ce_sum += F.cross_entropy(selected_logits, selected_targets, reduction="sum").item()
                 count += len(selected_targets)
             confusion_update(cm, logits.argmax(1).cpu(), targets.cpu(), valid.cpu())

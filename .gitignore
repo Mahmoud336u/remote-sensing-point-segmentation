@@ -24,3 +24,8 @@ results/verification/*
 *.pt
 *.pth
 *.log
+remote_sensing_assessment_submission.zip
+remote_sensing_assessment_submission.zip.sha256
+report/*.aux
+report/*.out
+report/*.toc

@@ -10,7 +10,7 @@ from torch.utils.data import Dataset
 
 from .config import CONDITIONS, canonical_hash, resolve_path
 from .data_manifest import load_manifest
-from .point_sampling import SEED_VERSION, d4, sample_points, stable_seed
+from .point_sampling import SEED_VERSION, d4, sample_points, spatial_coverage, stable_seed
 
 
 def select_tiles(scenes: list[dict], patch_size: int, cap: int | None,
@@ -93,6 +93,7 @@ class SegmentationDataset(Dataset):
             valid, budget, stable_seed(self.seed, tile["scene"], tile["id"], strategy), strategy)
         return {"tile_id": tile["id"], "source_id": tile["scene"],
                 "valid_pixels": int(valid.sum()), "annotated_pixels": int(points.sum()),
+                "spatial_coverage": spatial_coverage(valid, points),
                 "flat_indices": np.flatnonzero(points).tolist() if strategy != "dense" else None,
                 "selection": "all_valid" if strategy == "dense" else "fixed_points"}
 

@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from src.point_sampling import d4, sample_points, stable_seed
+from src.point_sampling import d4, sample_points, spatial_coverage, stable_seed
 
 
 @pytest.mark.parametrize("strategy", ["uniform", "stratified"])
@@ -54,3 +54,35 @@ def test_joint_d4(transform):
 def test_bad_budget(budget):
     with pytest.raises(ValueError):
         sample_points(np.ones((2, 2), dtype=bool), budget, 1)
+
+
+def test_coverage_known_grid_without_semantic_labels():
+    valid = np.ones((64, 64), dtype=bool)
+    points = np.zeros_like(valid)
+    points[4::8, 4::8] = True
+    result = spatial_coverage(valid, points)
+    assert result["valid_cells"] == result["occupied_cells"] == 64
+    assert result["occupied_cell_fraction"] == 1
+    assert result["mean_nearest_neighbor_normalized"] == pytest.approx(8 / 63)
+
+
+def test_coverage_padding_and_invalid_points():
+    valid = np.zeros((64, 64), dtype=bool)
+    valid[:1, :4] = True
+    points = valid.copy()
+    result = spatial_coverage(valid, points)
+    assert result["valid_cells"] == 4 and result["occupied_cell_fraction"] == 1
+    assert result["mean_nearest_neighbor_normalized"] == pytest.approx(1 / 3)
+    points[3, 3] = True
+    with pytest.raises(ValueError):
+        spatial_coverage(valid, points)
+
+
+def test_coverage_empty_or_single_point():
+    valid = np.ones((8, 8), dtype=bool)
+    points = np.zeros_like(valid)
+    assert spatial_coverage(valid, points)["occupied_cell_fraction"] == 0
+    assert spatial_coverage(valid, points)["mean_nearest_neighbor_normalized"] is None
+    points[0, 0] = True
+    assert spatial_coverage(valid, points)["occupied_cell_fraction"] == 1 / 64
+    assert spatial_coverage(valid, points)["mean_nearest_neighbor_normalized"] is None

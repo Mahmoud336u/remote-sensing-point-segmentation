@@ -1,0 +1,122 @@
+[
+  {
+    "condition": "uniform_10",
+    "experiment_id": "A1",
+    "points_per_tile": 10,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_10/seed_17",
+    "sampling": "uniform",
+    "seed": 17,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_50",
+    "experiment_id": "A2/B1",
+    "points_per_tile": 50,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_50/seed_17",
+    "sampling": "uniform",
+    "seed": 17,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_200",
+    "experiment_id": "A3",
+    "points_per_tile": 200,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_200/seed_17",
+    "sampling": "uniform",
+    "seed": 17,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "stratified_50",
+    "experiment_id": "B2",
+    "points_per_tile": 50,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/stratified_50/seed_17",
+    "sampling": "stratified",
+    "seed": 17,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_10",
+    "experiment_id": "A1",
+    "points_per_tile": 10,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_10/seed_29",
+    "sampling": "uniform",
+    "seed": 29,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_50",
+    "experiment_id": "A2/B1",
+    "points_per_tile": 50,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_50/seed_29",
+    "sampling": "uniform",
+    "seed": 29,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_200",
+    "experiment_id": "A3",
+    "points_per_tile": 200,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_200/seed_29",
+    "sampling": "uniform",
+    "seed": 29,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "stratified_50",
+    "experiment_id": "B2",
+    "points_per_tile": 50,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/stratified_50/seed_29",
+    "sampling": "stratified",
+    "seed": 29,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_10",
+    "experiment_id": "A1",
+    "points_per_tile": 10,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_10/seed_43",
+    "sampling": "uniform",
+    "seed": 43,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_50",
+    "experiment_id": "A2/B1",
+    "points_per_tile": 50,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_50/seed_43",
+    "sampling": "uniform",
+    "seed": 43,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "uniform_200",
+    "experiment_id": "A3",
+    "points_per_tile": 200,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/uniform_200/seed_43",
+    "sampling": "uniform",
+    "seed": 43,
+    "status": "blocked_prerequisites"
+  },
+  {
+    "condition": "stratified_50",
+    "experiment_id": "B2",
+    "points_per_tile": 50,
+    "reason": "Official dataset access and real-data smoke required",
+    "run_id": "cpu_paired/stratified_50/seed_43",
+    "sampling": "stratified",
+    "seed": 43,
+    "status": "blocked_prerequisites"
+  }
+]

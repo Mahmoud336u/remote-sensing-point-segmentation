@@ -1,0 +1,443 @@
+{
+  "assessment_complete": false,
+  "campaign_figure_files": [],
+  "claims": [
+    {
+      "claim": "Current software tests",
+      "id": "E01",
+      "source_sha256": {
+        "results/verification/current_suite.json": "674e7ea3cef66c7056290fa334b9a81b007c638b2361eec85b9572437729ca19",
+        "results/verification/reconstruction-pytest.xml": "0356782f47dfdd6eb56792d64f5d69628a7e0e296f6783c27760602e36198ee8"
+      },
+      "sources": [
+        "results/verification/current_suite.json",
+        "results/verification/reconstruction-pytest.xml"
+      ],
+      "status": "verified_synthetic_scope",
+      "value": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 131,
+        "skipped": 1
+      }
+    },
+    {
+      "claim": "Locked CPU dependency install",
+      "id": "E02",
+      "source_sha256": {
+        "requirements-phase3-cpu.lock": "5f3772b936c7237be7aade8ba1977e1b84ad10cfab95b66b75634048e1bfb030",
+        "results/verification/lock_install.json": "0fa711af6017c64a518574598d25f2f46d53bebe5d37ff76f257a920e5f1629e"
+      },
+      "sources": [
+        "requirements-phase3-cpu.lock",
+        "results/verification/lock_install.json"
+      ],
+      "status": "verified",
+      "value": {
+        "lock_sha256": "5f3772b936c7237be7aade8ba1977e1b84ad10cfab95b66b75634048e1bfb030",
+        "output_shape": [
+          2,
+          5,
+          65,
+          97
+        ],
+        "scope": "fresh isolated virtual environment; hashed lock install, pip check, imports and U-Net forward",
+        "status": "passed",
+        "torch": "2.14.0+cpu"
+      }
+    },
+    {
+      "claim": "U-Net parameter count and ImageNet initialization",
+      "id": "E03",
+      "source_sha256": {
+        "results/verification/reconstructed_initialization.json": "42330d73a34a2cfc4766907b98757309af436caac18100f66c14e533ef512b80",
+        "src/model.py": "6027bcd877d5bfadb5ac3bcd19a5c442dd9cbba9c133c26c3966458ad93d6a7d"
+      },
+      "sources": [
+        "src/model.py",
+        "results/verification/reconstructed_initialization.json"
+      ],
+      "status": "verified",
+      "value": {
+        "encoder_weight_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+        "expected_sha256": "f37072fd47e89c5e827621c5baffa7500819f7896bbacec160b1a16c560e07ec",
+        "parameter_count": 14328789,
+        "status": "passed"
+      }
+    },
+    {
+      "claim": "Original dataset inventory and split statistics",
+      "id": "E04",
+      "source_sha256": {
+        "docs/recovery_checkpoint.json": "cba51df5c564297c75f65fb19828fb4a5e7dead3355409e67920fa536fd4c7b6",
+        "docs/source_evidence.json": "1dfb376c021767c76c672ca0bd54ac5264083ef448cba71adae3c64083cf70c9"
+      },
+      "sources": [
+        "docs/recovery_checkpoint.json",
+        "docs/source_evidence.json"
+      ],
+      "status": "historical_unrecovered",
+      "value": null
+    },
+    {
+      "claim": "Measured campaign score rows",
+      "id": "E05",
+      "source_sha256": {
+        "results/cpu_paired/results.csv": "af0a9ee4d2bdc0edf4de509641ba551eaccc54ff05559fb90af5ac27554803b0",
+        "results/cpu_paired/results.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "sources": [
+        "results/cpu_paired/results.json",
+        "results/cpu_paired/results.csv"
+      ],
+      "status": "verified_artifact_count",
+      "value": 0
+    },
+    {
+      "claim": "Real-data partition and smoke verification",
+      "id": "E06",
+      "source_sha256": {
+        "docs/experiment_analysis.md": "064cb1b894e9b7fb941515836bf44d5591cf9125623edb8d88a12a41b0a5824c",
+        "results/verification/phase4_preflight.json": "b5db75810b7a658ed3143fcc939168ba3602150847ccd832b1f6044ccc2864e7"
+      },
+      "sources": [
+        "results/verification/phase4_preflight.json",
+        "docs/experiment_analysis.md"
+      ],
+      "status": "blocked_missing_artifacts",
+      "value": {
+        "manifest_available": false,
+        "real_data_smoke_available": false
+      }
+    },
+    {
+      "claim": "Sequential notebook execution",
+      "id": "E07",
+      "source_sha256": {
+        "notebooks/assessment_demo.ipynb": "b9dddecb9f0337b488abd2168bc7cb09fcc731b96c886ef7bcda591ac37c4d70",
+        "results/verification/notebook.json": "bbf71102d5380ea846c11ca0df31f0c9477fc215b89c53f4b4334e71a887ea9c"
+      },
+      "sources": [
+        "notebooks/assessment_demo.ipynb",
+        "results/verification/notebook.json"
+      ],
+      "status": "verified_execution_incomplete_real_data",
+      "value": {
+        "code_cells_executed": 10,
+        "path": "/workspace/remote-sensing-point-segmentation/notebooks/assessment_demo.ipynb",
+        "real_data_assessment_complete": false,
+        "real_data_smoke_available": false,
+        "rendered_figures": 1,
+        "scope": "offline mathematical demo and available run-artifact inspection",
+        "section_status": {
+          "architecture": "synthetic_forward_verified",
+          "checkpoint": "blocked_missing_checkpoint",
+          "dataset_sample": "blocked_missing_real_data",
+          "evaluation": "blocked_missing_metrics",
+          "experimental_results": "blocked_zero_completed_runs",
+          "observations": "limitations_documented",
+          "partial_ce": "verified",
+          "setup": "verified",
+          "sparse_visualization": "synthetic_geometry_only",
+          "training_setup": "planned_only"
+        },
+        "sha256": "b9dddecb9f0337b488abd2168bc7cb09fcc731b96c886ef7bcda591ac37c4d70",
+        "status": "passed"
+      }
+    },
+    {
+      "claim": "Candidate CPU campaign controls",
+      "id": "E08",
+      "source_sha256": {
+        "configs/cpu_paired.yaml": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+        "results/cpu_paired/campaign_config.json": "03690c71778e531231a0db885df1254424bed88ccaa57534aa0bb948cee5d188"
+      },
+      "sources": [
+        "configs/cpu_paired.yaml",
+        "results/cpu_paired/campaign_config.json"
+      ],
+      "status": "planned_not_executed",
+      "value": {
+        "epochs": 10,
+        "seeds": [
+          17,
+          29,
+          43
+        ],
+        "tile_caps": {
+          "test": 32,
+          "train": 128,
+          "val": 32
+        }
+      }
+    },
+    {
+      "claim": "Nominal annotation percent on fully valid 256-square tiles",
+      "id": "E09",
+      "source_sha256": {
+        "configs/cpu_paired.yaml": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+        "src/dataset.py": "4fb0a17018a33cc3ce38c41c317b98d9cf9f7ab768b6bc1c78b67903478ecfd4"
+      },
+      "sources": [
+        "configs/cpu_paired.yaml",
+        "src/dataset.py"
+      ],
+      "status": "arithmetic_not_measured_subset",
+      "value": {
+        "10": 0.0152587890625,
+        "200": 0.30517578125,
+        "50": 0.0762939453125
+      }
+    },
+    {
+      "claim": "Original three assessment requirements reviewed",
+      "id": "E10",
+      "source_sha256": {
+        "docs/assessment_requirements.md": "e1870575b00a4ec7d38bef7935147f2783b0c08369db2e0b1b8d43bffcfe4d35",
+        "docs/assessment_source.json": "7a61754c89b5058f31ed37c1404dc66cb0c583aee17d1c6dfacd074e9f5285e0"
+      },
+      "sources": [
+        "docs/assessment_requirements.md",
+        "docs/assessment_source.json"
+      ],
+      "status": "verified_user_document",
+      "value": {
+        "bytes": 434155,
+        "filename": "Technical Assessment.pdf",
+        "original_pdf_redistributed": false,
+        "pages": 1,
+        "review": "text extraction and rendered-page visual inspection, including embedded problem statement",
+        "sha256": "6b7cfc9586a35d6df4fa6a0816333cedfdb149098b21580eadbd2deb83ee561e",
+        "source": "user-uploaded assessment PDF",
+        "tasks": [
+          "Implement partial Cross entropy loss",
+          "Find any remote sensing image segmentation data, randomly sample the simulated point label, and add the loss to any remote sensing segmentation network",
+          "Design experiments, explore one or two factors that affect the performance, and write technical reports (method + experiment(purpose/hypothesis + experimental process + results))"
+        ],
+        "tools_requirement": "Python; any deep learning toolbox; Python files or Jupyter notebook plus supporting document"
+      }
+    }
+  ],
+  "excluded_evidence": [
+    "historical unrecovered smoke scores",
+    "temporary synthetic test fixtures outside results"
+  ],
+  "experimental_claims": [
+    {
+      "condition": "uniform_10",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_10/seed_17",
+      "seed": 17,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_50",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_50/seed_17",
+      "seed": 17,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_200",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_200/seed_17",
+      "seed": 17,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "stratified_50",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/stratified_50/seed_17",
+      "seed": 17,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_10",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_10/seed_29",
+      "seed": 29,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_50",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_50/seed_29",
+      "seed": 29,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_200",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_200/seed_29",
+      "seed": 29,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "stratified_50",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/stratified_50/seed_29",
+      "seed": 29,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_10",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_10/seed_43",
+      "seed": 43,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_50",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_50/seed_43",
+      "seed": 43,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "uniform_200",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/uniform_200/seed_43",
+      "seed": 43,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    },
+    {
+      "condition": "stratified_50",
+      "configuration": "configs/cpu_paired.yaml",
+      "configuration_sha256": "81d2f84fc4094f20851d1d8c9d8f7601d7c7f96ff33c16438f82f49ca25ec667",
+      "measured_result_rows": [],
+      "metric_files": [],
+      "run_id": "cpu_paired/stratified_50/seed_43",
+      "seed": 43,
+      "status": "blocked_prerequisites",
+      "supported_performance_claims": false
+    }
+  ],
+  "inspected_run_files": [],
+  "result_file_inventory": [
+    {
+      "bytes": 1959,
+      "path": "results/README.md",
+      "sha256": "c2947b4bc35e4f53bdbb08baf2476096e3993e6b20daa0359320f20ba3ba5e29"
+    },
+    {
+      "bytes": 1544,
+      "path": "results/cpu_paired/campaign_config.json",
+      "sha256": "03690c71778e531231a0db885df1254424bed88ccaa57534aa0bb948cee5d188"
+    },
+    {
+      "bytes": 2942,
+      "path": "results/cpu_paired/preflight.json",
+      "sha256": "b5db75810b7a658ed3143fcc939168ba3602150847ccd832b1f6044ccc2864e7"
+    },
+    {
+      "bytes": 348,
+      "path": "results/cpu_paired/results.csv",
+      "sha256": "af0a9ee4d2bdc0edf4de509641ba551eaccc54ff05559fb90af5ac27554803b0"
+    },
+    {
+      "bytes": 3,
+      "path": "results/cpu_paired/results.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "bytes": 1716,
+      "path": "results/cpu_paired/run_status.csv",
+      "sha256": "7705292022fa76b6a2aca7b49cd42871e86ce4f72a412b9df963486571b6c44a"
+    },
+    {
+      "bytes": 3552,
+      "path": "results/cpu_paired/run_status.json",
+      "sha256": "13fc765412687cb5968b9e17924123a573939d1eb5ab5f3e29f19628cb7bebdc"
+    },
+    {
+      "bytes": 4361,
+      "path": "results/verification/current_suite.json",
+      "sha256": "674e7ea3cef66c7056290fa334b9a81b007c638b2361eec85b9572437729ca19"
+    },
+    {
+      "bytes": 297,
+      "path": "results/verification/lock_install.json",
+      "sha256": "0fa711af6017c64a518574598d25f2f46d53bebe5d37ff76f257a920e5f1629e"
+    },
+    {
+      "bytes": 880,
+      "path": "results/verification/notebook.json",
+      "sha256": "bbf71102d5380ea846c11ca0df31f0c9477fc215b89c53f4b4334e71a887ea9c"
+    },
+    {
+      "bytes": 12936,
+      "path": "results/verification/phase4-baseline-pytest.xml",
+      "sha256": "e4cc344262f65223c5238a44983d2030383f848f2718f100cd1644e499d83beb"
+    },
+    {
+      "bytes": 2942,
+      "path": "results/verification/phase4_preflight.json",
+      "sha256": "b5db75810b7a658ed3143fcc939168ba3602150847ccd832b1f6044ccc2864e7"
+    },
+    {
+      "bytes": 721,
+      "path": "results/verification/phase5_preflight.json",
+      "sha256": "3976ba82774f99f5dfedea671b29d2dda6dc19e7b0afbd610da12d0ea6ae5d28"
+    },
+    {
+      "bytes": 240,
+      "path": "results/verification/reconstructed_initialization.json",
+      "sha256": "42330d73a34a2cfc4766907b98757309af436caac18100f66c14e533ef512b80"
+    },
+    {
+      "bytes": 14872,
+      "path": "results/verification/reconstruction-pytest.xml",
+      "sha256": "0356782f47dfdd6eb56792d64f5d69628a7e0e296f6783c27760602e36198ee8"
+    },
+    {
+      "bytes": 473,
+      "path": "results/verification/recovery_blockers.json",
+      "sha256": "518c5e67512531e1125fd690681f9b7eaec6365f095e0903e10f77a4a78becd3"
+    }
+  ],
+  "schema_version": 1
+}

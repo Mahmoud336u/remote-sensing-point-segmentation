@@ -33,6 +33,12 @@ def summarize(rows: list[dict], split: str) -> list[dict]:
             entry[key] = statistics.mean(values) if values else None
             entry[f"{key}_std"] = statistics.stdev(values) if len(values) >= 2 else None
             entry[f"{key}_n"] = len(values)
+        for key in ("training_seconds", "validation_seconds", "occupied_cell_fraction",
+                    "mean_nearest_neighbor_normalized"):
+            values = [r[key] for r in group if r.get(key) is not None]
+            entry[key] = statistics.mean(values) if values else None
+            entry[f"{key}_std"] = statistics.stdev(values) if len(values) >= 2 else None
+            entry[f"{key}_n"] = len(values)
         summary.append(entry)
     return summary
 
