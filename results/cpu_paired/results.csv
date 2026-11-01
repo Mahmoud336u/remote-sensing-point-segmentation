@@ -1,0 +1,1 @@
+run_id,condition,seed,experiment_id,sampling,points_per_tile,split,best_epoch,annotation_fraction,unique_annotations,valid_training_pixels,training_seconds,validation_seconds,occupied_cell_fraction,mean_nearest_neighbor_normalized,checkpoint_sha256,miou,mean_dice,pixel_accuracy,dense_ce,iou_class_0,iou_class_1,iou_class_2,iou_class_3,iou_class_4

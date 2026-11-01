@@ -20,7 +20,13 @@ def test_execute_freeze_final_test_and_immutable_controls(raster_cfg, monkeypatc
     result = runner.execute(raster_cfg)
     assert len(result["completed_rows"]) == 1
     assert result["completed_rows"][0]["split"] == "val"
+    assert result["completed_rows"][0]["experiment_id"] == "A2/B1"
+    assert result["completed_rows"][0]["points_per_tile"] == 50
+    assert result["completed_rows"][0]["training_seconds"] > 0
+    assert 0 < result["completed_rows"][0]["occupied_cell_fraction"] <= 1
     root = Path(raster_cfg["experiment"]["output_root"])
+    assert json.loads((root / "run_status.json").read_text())[0]["status"] == "completed"
+    assert "completed" in (root / "run_status.csv").read_text()
     assert not list(root.glob("**/final_test.json"))
     frozen = runner.freeze(raster_cfg)
     before = frozen.read_bytes()
@@ -54,4 +60,6 @@ def test_runner_records_failures_and_continues(raster_cfg, monkeypatch):
     root = Path(raster_cfg["experiment"]["output_root"])
     assert calls == ["uniform_10", "uniform_50"]
     assert len(json.loads((root / "failures.json").read_text())) == 2
+    assert all(row["status"] == "failed" for row in runner.collect(raster_cfg)["runs"])
+    assert all(row["error"] for row in json.loads((root / "run_status.json").read_text()))
     assert not (root / "results.csv").exists()

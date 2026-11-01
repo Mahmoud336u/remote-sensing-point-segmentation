@@ -1,7 +1,7 @@
 {
-  "junit_sha256": "f5c769ef1ceee0d432f837c93fe9ca0e23d20309146017fe45b7a43cbdbb45ea",
-  "passed": 73,
-  "scope": "reconstructed phase2 subset of current suite; not historical tests",
+  "junit_sha256": "3c6bac98bbf8de08ab56b38eafd82566c4dd89fe1e57b6333c2e07f428e8d7cd",
+  "passed": 76,
+  "scope": "current phase2 contract subset, including Phase4 geometric diagnostics; not historical tests",
   "skipped": 1,
-  "tests": 74
+  "tests": 77
 }

@@ -10,6 +10,12 @@ best_validation.json, checkpoints/best.pt and checkpoints/last.pt. A verified
 real-data smoke additionally saves reloaded_validation.json and verification.json.
 Figures include editable JSON/CSV/NPZ inputs and PNG/PDF exports.
 
+Phase 4 timing.json separates measured training/validation duration per completed
+epoch. Summary/export durations accumulate across resumes. Annotation records
+include geometric coverage diagnostics without semantic class information.
+run_status.csv/json records blocked or missing runs separately from results;
+results.csv/json includes only actually completed measured runs.
+
 Each campaign writes campaign_config.json, preflight.json, campaign_status.json,
 failures.json and actual completed results.csv/results.json. Final-test inference
 requires frozen_protocol.json and explicit authorization. Scores for incomplete,

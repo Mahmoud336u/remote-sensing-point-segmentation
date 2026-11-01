@@ -1,7 +1,8 @@
 # Reconstruction verification
 
-The current source-bound suite completed with 114 passed, one CUDA-only skipped,
-zero failures and zero errors. The report is results/verification/reconstruction-pytest.xml;
+The initial recovery suite at commit 9282366 completed with 114 passed and one
+CUDA-only skipped. The current Phase 4 suite completes with 117 passed, one
+CUDA-only skipped, zero failures and zero errors. The report is results/verification/reconstruction-pytest.xml;
 its fingerprints and exact counts are in current_suite.json. Synthetic raster
 fixtures exercise full U-Net training/reload, multiprocessing and campaign gates.
 No LandCover.ai campaign or final-test inference has executed.

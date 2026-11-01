@@ -61,3 +61,37 @@ def d4(array: np.ndarray, transform: int) -> np.ndarray:
     if transform >= 4:
         result = np.flip(result, axis=-1)
     return np.ascontiguousarray(result)
+
+
+def spatial_coverage(valid: np.ndarray, points: np.ndarray, bins: int = 8) -> dict:
+    """Class-blind geometry diagnostics; never used to select training points.
+
+    Occupancy uses a fixed grid over the valid bounding rectangle. Nearest-point
+    distances normalize each axis to [0,1]. Dense masks omit the quadratic
+    nearest-neighbor calculation; their occupied-cell fraction remains defined.
+    """
+    valid, points = np.asarray(valid), np.asarray(points)
+    if (valid.ndim != 2 or points.shape != valid.shape or valid.dtype != np.bool_
+            or points.dtype != np.bool_ or np.any(points & ~valid)):
+        raise ValueError("Coverage needs aligned boolean masks and valid selected points")
+    if type(bins) is not int or bins < 1:
+        raise ValueError("bins must be a positive integer")
+    vy, vx = np.nonzero(valid)
+    py, px = np.nonzero(points)
+    if not len(vy):
+        return {"grid_bins_per_axis": bins, "valid_cells": 0, "occupied_cells": 0,
+                "occupied_cell_fraction": None, "mean_nearest_neighbor_normalized": None}
+    y0, x0 = vy.min(), vx.min()
+    height, width = vy.max() - y0 + 1, vx.max() - x0 + 1
+    valid_cells = np.unique(((vy - y0) * bins // height) * bins + (vx - x0) * bins // width)
+    occupied = np.unique(((py - y0) * bins // height) * bins + (px - x0) * bins // width)
+    nearest = None
+    if 2 <= len(py) <= 200:
+        normalized = np.column_stack(((py - y0) / max(height - 1, 1),
+                                      (px - x0) / max(width - 1, 1)))
+        distance = np.sqrt(((normalized[:, None] - normalized[None, :]) ** 2).sum(-1))
+        np.fill_diagonal(distance, np.inf)
+        nearest = float(distance.min(axis=1).mean())
+    return {"grid_bins_per_axis": bins, "valid_cells": int(len(valid_cells)),
+            "occupied_cells": int(len(occupied)), "occupied_cell_fraction": len(occupied) / len(valid_cells),
+            "mean_nearest_neighbor_normalized": nearest}

@@ -81,7 +81,9 @@ verified real-data smoke/checkpoint reload. It prioritizes one seed for all spar
 conditions, then additional paired seeds, then any configured dense references.
 Each run saves immutable configuration, fixed annotation coordinates, source and
 subset provenance, count-weighted losses, dense validation metrics, optimizer/RNG
-state and best/last checkpoints. Completed runs are protected. Interrupted runs
+state and best/last checkpoints. Epoch timing persists across resumes; result
+exports include cumulative training/validation time and class-blind spatial
+coverage diagnostics. Completed runs are protected. Interrupted runs
 require the same configuration, code, manifest, subsets, output directory and
 preserved checkpoints.
 

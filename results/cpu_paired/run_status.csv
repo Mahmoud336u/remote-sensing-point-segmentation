@@ -1,0 +1,13 @@
+run_id,experiment_id,condition,sampling,points_per_tile,seed,status,reason
+cpu_paired/uniform_10/seed_17,A1,uniform_10,uniform,10,17,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_50/seed_17,A2/B1,uniform_50,uniform,50,17,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_200/seed_17,A3,uniform_200,uniform,200,17,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/stratified_50/seed_17,B2,stratified_50,stratified,50,17,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_10/seed_29,A1,uniform_10,uniform,10,29,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_50/seed_29,A2/B1,uniform_50,uniform,50,29,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_200/seed_29,A3,uniform_200,uniform,200,29,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/stratified_50/seed_29,B2,stratified_50,stratified,50,29,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_10/seed_43,A1,uniform_10,uniform,10,43,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_50/seed_43,A2/B1,uniform_50,uniform,50,43,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/uniform_200/seed_43,A3,uniform_200,uniform,200,43,blocked_prerequisites,Official dataset access and real-data smoke required
+cpu_paired/stratified_50/seed_43,B2,stratified_50,stratified,50,43,blocked_prerequisites,Official dataset access and real-data smoke required

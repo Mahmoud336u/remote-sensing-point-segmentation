@@ -71,3 +71,27 @@ validity; this is not inference or model selection.
 The dense reference uses ordinary CE and more annotation availability. It is
 not guaranteed to outperform a sparse model and is not a guaranteed measured
 upper bound.
+
+## Phase 4 measurement additions
+
+Training and validation wall times are measured separately for every completed
+epoch, including data-loader time and excluding initialization/checkpoint I/O.
+CUDA measurements synchronize the device at boundaries. Epoch timing records
+are saved in checkpoints and timing.json, so cumulative totals include epochs
+completed before a resume. Timing is kept separate from deterministic loss and
+metric history.
+
+Spatial coverage is descriptive and never affects point selection. Occupied-cell
+fraction uses a fixed 8x8 grid over each tile's valid bounding rectangle; cells
+with no valid pixels are excluded from the denominator. Mean nearest-neighbor
+distance normalizes each spatial axis to [0,1]. It is undefined for fewer than
+two points and is not computed for dense masks with more than 200 points. Run
+summaries average defined tile diagnostics and report the number of contributing
+tiles. These geometric measurements do not use hidden class labels, and greater
+coverage alone does not establish better segmentation.
+
+The experimental labeling unit is a 256x256 training tile, not an entire original
+aerial scene. At a fully valid tile, nominal 10/50/200-point fractions are
+0.0152587890625%, 0.0762939453125%, and 0.30517578125%. Actual campaign fractions
+must use unique annotations divided by pooled valid training pixels, accounting
+for edge tiles and budgets clipped to available valid pixels.

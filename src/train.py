@@ -28,6 +28,12 @@ def worker_seed(worker_id: int):
     random.seed(seed)
 
 
+def performance_clock(device: torch.device) -> float:
+    if device.type == "cuda":
+        torch.cuda.synchronize(device)
+    return time.perf_counter()
+
+
 def make_loader(dataset, cfg: dict, generator: torch.Generator, shuffle: bool):
     workers = cfg["training"]["num_workers"]
     kwargs = {"multiprocessing_context": "spawn", "timeout": 60} if workers else {}
@@ -156,7 +162,7 @@ def _train(cfg, condition, seed, directory, resume, stop_after_epochs):
     val_generator = torch.Generator().manual_seed(seed + 1)
     loader = make_loader(train_data, cfg, generator, True)
     val_loader = make_loader(val_data, cfg, val_generator, False)
-    history, best, best_epoch, start = [], -1., 0, 1
+    history, timings, best, best_epoch, start = [], [], -1., 0, 1
     if last:
         model.load_state_dict(last["model"])
         optimizer.load_state_dict(last["optimizer"])
@@ -164,15 +170,23 @@ def _train(cfg, condition, seed, directory, resume, stop_after_epochs):
         scaler.load_state_dict(last["scaler"])
         restore_rng(last["rng"], generator)
         history, best, best_epoch = last["history"], last["best_metric"], last["best_epoch"]
+        timings = last.get("timings", [])
         start = last["epoch"] + 1
     else:
         write_json(directory / "config.json", cfg)
         records = [train_data.annotation_record(i) for i in range(len(train_data))]
         cost = sum(r["annotated_pixels"] for r in records)
         pixels = sum(r["valid_pixels"] for r in records)
+        coverage = {}
+        for key in ("occupied_cell_fraction", "mean_nearest_neighbor_normalized"):
+            values = [r["spatial_coverage"][key] for r in records
+                      if r["spatial_coverage"][key] is not None]
+            coverage[key] = float(np.mean(values)) if values else None
+            coverage[f"{key}_tiles"] = len(values)
         write_json(directory / "annotations.json",
                    {"records": records, "unique_annotations": cost, "valid_training_pixels": pixels,
                     "annotation_fraction": cost / pixels,
+                    "spatial_coverage_mean_over_tiles": coverage,
                     "seed_algorithm": train_data.provenance()["seed_algorithm"]})
     run = {"run_id": f"{cfg['profile']}/{condition}/seed_{seed}",
            "status": "running", "controls_hash": canonical_hash(controls), "config_hash": config_hash,
@@ -188,13 +202,18 @@ def _train(cfg, condition, seed, directory, resume, stop_after_epochs):
         for epoch in range(start, end + 1):
             train_data.set_epoch(epoch)
             lr = optimizer.param_groups[0]["lr"]
+            train_began = performance_clock(device)
             train_metrics = train_epoch(model, loader, optimizer, scaler, device,
                                         cfg["model"]["classes"], dense=condition == "dense_reference",
                                         amp=amp)
+            train_ended = performance_clock(device)
             val_metrics = evaluate_model(model, val_loader, device, cfg["model"]["classes"])
+            validation_ended = performance_clock(device)
             if val_metrics["miou"] is None:
                 raise RuntimeError("Validation contains no valid pixels")
             history.append({"epoch": epoch, "lr": lr, "train": train_metrics, "val": val_metrics})
+            timings.append({"epoch": epoch, "training_seconds": train_ended - train_began,
+                            "validation_seconds": validation_ended - train_ended})
             improved = val_metrics["miou"] > best
             if improved:
                 best, best_epoch = val_metrics["miou"], epoch
@@ -207,12 +226,14 @@ def _train(cfg, condition, seed, directory, resume, stop_after_epochs):
                      "config_hash": config_hash, "condition": condition, "seed": seed,
                      "output_directory": str(directory.resolve()),
                      "runtime": runtime,
+                     "timings": timings,
                      "provenance": provenance}
             if improved:
                 save_checkpoint(directory / "checkpoints/best.pt", state)
                 write_json(directory / "best_validation.json", {"epoch": epoch, "metrics": val_metrics})
             save_checkpoint(directory / "checkpoints/last.pt", state)
             write_json(directory / "history.json", history)
+            write_json(directory / "timing.json", timings)
             print(json.dumps({"run": run["run_id"], "epoch": epoch,
                               "training_loss": train_metrics["loss"], "val_miou": val_metrics["miou"]}),
                   flush=True)
@@ -225,6 +246,9 @@ def _train(cfg, condition, seed, directory, resume, stop_after_epochs):
         run["best_epoch"] = best_epoch
         run["best_validation_miou"] = best
         run["session_training_seconds"] = time.perf_counter() - began
+        run["training_seconds"] = sum(row["training_seconds"] for row in timings)
+        run["validation_seconds"] = sum(row["validation_seconds"] for row in timings)
+        run["timing_scope"] = "completed epochs across resumes; includes loader time; excludes initialization/checkpoint I/O"
         write_json(run_path, run)
         write_json(directory / "summary.json",
                    {**run, "epochs_completed": history[-1]["epoch"] if history else 0,

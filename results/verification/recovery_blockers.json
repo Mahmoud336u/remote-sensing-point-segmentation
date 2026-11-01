@@ -2,12 +2,13 @@
   "applied_policy_contains_dataset_host": false,
   "dataset_archive": "missing",
   "dataset_host": "landcover.ai.linuxpolska.com",
-  "environment_configuration_changed": false,
   "environment_published": false,
   "last_access_result": "proxy HTTP 403",
   "original_manifest": "not recovered",
   "phase4_campaign_runs": 0,
   "real_data_smoke": "not run",
   "real_data_test_evaluations": 0,
-  "saved_draft_contains_dataset_host": false
+  "recovery_environment_draft_updated": true,
+  "runtime_network_changed": false,
+  "saved_draft_contains_dataset_host": true
 }
